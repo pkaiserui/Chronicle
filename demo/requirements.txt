@@ -1,0 +1,23 @@
+# Chronicle Demo Dependencies
+
+# Web framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.0.0
+
+# UI
+streamlit>=1.31.0
+
+# HTTP client (for simulator)
+requests>=2.31.0
+
+# OpenTelemetry (optional but recommended)
+opentelemetry-api>=1.22.0
+opentelemetry-sdk>=1.22.0
+opentelemetry-exporter-otlp>=1.22.0
+opentelemetry-instrumentation-fastapi>=0.43b0
+opentelemetry-instrumentation-requests>=0.43b0
+opentelemetry-instrumentation-sqlite3>=0.43b0
+
+# Data handling
+pandas>=2.0.0
