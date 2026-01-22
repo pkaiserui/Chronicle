@@ -88,7 +88,8 @@ def get_db() -> TaskDatabase:
     """Get the database instance."""
     global db
     if db is None:
-        db = TaskDatabase("demo_tasks.db")
+        # TaskDatabase will read config from environment variables
+        db = TaskDatabase()
     return db
 
 
@@ -97,8 +98,10 @@ async def lifespan(app: FastAPI):
     """Application lifespan manager."""
     # Startup
     global db
-    db = TaskDatabase("demo_tasks.db")
-    configure_storage("chronicle_captures.db")
+    # TaskDatabase will read config from environment variables
+    db = TaskDatabase()
+    # CaptureStorage will also read config from environment variables
+    configure_storage()
     yield
     # Shutdown (cleanup if needed)
 

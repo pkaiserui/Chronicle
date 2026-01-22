@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import functools
 import json
+import os
 import sqlite3
 import time
 import traceback
@@ -20,10 +21,48 @@ from pathlib import Path
 from threading import local
 from typing import Any, Callable, Dict, List, Optional, TypeVar
 
+try:
+    import psycopg2
+    PSYCOPG2_AVAILABLE = True
+except ImportError:
+    PSYCOPG2_AVAILABLE = False
+
+from dotenv import load_dotenv
+
 F = TypeVar("F", bound=Callable[..., Any])
+
+# Load environment variables
+load_dotenv()
 
 # Thread-local storage for capture context
 _context_storage = local()
+
+
+def get_capture_db_config() -> dict:
+    """Get capture database configuration from environment variables."""
+    db_type = os.getenv("DB_TYPE", "sqlite").lower()
+    
+    if db_type == "postgres":
+        # Check for full DSN first
+        dsn = os.getenv("POSTGRES_DSN")
+        if dsn:
+            return {"type": "postgres", "dsn": dsn}
+        
+        # Build DSN from individual components
+        return {
+            "type": "postgres",
+            "host": os.getenv("POSTGRES_HOST", "localhost"),
+            "port": int(os.getenv("POSTGRES_PORT", "5432")),
+            "user": os.getenv("POSTGRES_USER", "chronicle_user"),
+            "password": os.getenv("POSTGRES_PASSWORD", "chronicle_password"),
+            "dbname": os.getenv("POSTGRES_DB", "chronicle_db"),
+        }
+    else:
+        # SQLite default
+        return {
+            "type": "sqlite",
+            "db_path": os.getenv("SQLITE_CAPTURES_DB", "chronicle_captures.db"),
+        }
 
 
 @dataclass
@@ -131,59 +170,150 @@ class CaptureContext:
 
 
 class CaptureStorage:
-    """SQLite storage for captured calls."""
+    """Storage for captured calls supporting both SQLite and PostgreSQL."""
 
-    def __init__(self, db_path: str = "chronicle_captures.db"):
-        self.db_path = Path(db_path)
+    def __init__(self, db_path: Optional[str] = None, db_config: Optional[dict] = None):
+        """
+        Initialize the capture storage.
+        
+        Args:
+            db_path: For SQLite, the path to the database file (deprecated, use db_config)
+            db_config: Database configuration dict (if None, reads from environment)
+        """
+        if db_config is None:
+            db_config = get_capture_db_config()
+        
+        self.db_config = db_config
+        self.db_type = db_config["type"]
+        
+        if self.db_type == "postgres":
+            if not PSYCOPG2_AVAILABLE:
+                raise ImportError(
+                    "psycopg2-binary is required for PostgreSQL support. "
+                    "Install it with: pip install psycopg2-binary"
+                )
+            # Store connection parameters
+            if "dsn" in db_config:
+                self.connection_string = db_config["dsn"]
+            else:
+                self.connection_string = (
+                    f"host={db_config['host']} "
+                    f"port={db_config['port']} "
+                    f"user={db_config['user']} "
+                    f"password={db_config['password']} "
+                    f"dbname={db_config['dbname']}"
+                )
+        else:
+            # SQLite
+            self.db_path = Path(db_path or db_config.get("db_path", "chronicle_captures.db"))
+        
         self._init_db()
 
     def _init_db(self) -> None:
         """Initialize the database schema."""
-        with sqlite3.connect(str(self.db_path)) as conn:
-            conn.execute("""
-                CREATE TABLE IF NOT EXISTS captured_calls (
-                    id TEXT PRIMARY KEY,
-                    function_name TEXT NOT NULL,
-                    module TEXT,
-                    data TEXT NOT NULL,
-                    start_time TEXT NOT NULL,
-                    duration_ms REAL,
-                    has_error INTEGER DEFAULT 0,
-                    created_at TEXT NOT NULL
-                )
-            """)
-            conn.execute("""
-                CREATE INDEX IF NOT EXISTS idx_captured_function_name
-                ON captured_calls(function_name)
-            """)
-            conn.execute("""
-                CREATE INDEX IF NOT EXISTS idx_captured_start_time
-                ON captured_calls(start_time)
-            """)
-            conn.execute("""
-                CREATE INDEX IF NOT EXISTS idx_captured_has_error
-                ON captured_calls(has_error)
-            """)
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            
+            if self.db_type == "postgres":
+                # PostgreSQL schema
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS captured_calls (
+                        id VARCHAR(255) PRIMARY KEY,
+                        function_name VARCHAR(500) NOT NULL,
+                        module VARCHAR(500),
+                        data TEXT NOT NULL,
+                        start_time TIMESTAMP NOT NULL,
+                        duration_ms REAL,
+                        has_error INTEGER DEFAULT 0,
+                        created_at TIMESTAMP NOT NULL
+                    )
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_captured_function_name
+                    ON captured_calls(function_name)
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_captured_start_time
+                    ON captured_calls(start_time)
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_captured_has_error
+                    ON captured_calls(has_error)
+                """)
+            else:
+                # SQLite schema
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS captured_calls (
+                        id TEXT PRIMARY KEY,
+                        function_name TEXT NOT NULL,
+                        module TEXT,
+                        data TEXT NOT NULL,
+                        start_time TEXT NOT NULL,
+                        duration_ms REAL,
+                        has_error INTEGER DEFAULT 0,
+                        created_at TEXT NOT NULL
+                    )
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_captured_function_name
+                    ON captured_calls(function_name)
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_captured_start_time
+                    ON captured_calls(start_time)
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_captured_has_error
+                    ON captured_calls(has_error)
+                """)
+            
             conn.commit()
+
+    @contextmanager
+    def _get_connection(self):
+        """Get a database connection."""
+        if self.db_type == "postgres":
+            conn = psycopg2.connect(self.connection_string)
+            try:
+                yield conn
+            finally:
+                conn.close()
+        else:
+            conn = sqlite3.connect(str(self.db_path))
+            try:
+                yield conn
+            finally:
+                conn.close()
+
+    def _get_param_placeholder(self) -> str:
+        """Get the parameter placeholder for the current database type."""
+        return "%s" if self.db_type == "postgres" else "?"
 
     def store(self, call: CapturedCall) -> None:
         """Store a captured call."""
-        with sqlite3.connect(str(self.db_path)) as conn:
-            conn.execute(
-                """
+        param_placeholder = self._get_param_placeholder()
+        start_time = call.start_time
+        start_time_str = start_time.isoformat() if self.db_type == "sqlite" else start_time
+        created_at = datetime.now(timezone.utc)
+        created_at_str = created_at.isoformat() if self.db_type == "sqlite" else created_at
+        
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                f"""
                 INSERT INTO captured_calls
                 (id, function_name, module, data, start_time, duration_ms, has_error, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES ({', '.join([param_placeholder] * 8)})
                 """,
                 (
                     call.id,
                     call.function_name,
                     call.module,
                     json.dumps(call.to_dict()),
-                    call.start_time.isoformat(),
+                    start_time_str,
                     call.duration_ms,
                     1 if call.exception else 0,
-                    datetime.now(timezone.utc).isoformat(),
+                    created_at_str,
                 ),
             )
             conn.commit()
@@ -196,69 +326,83 @@ class CaptureStorage:
         offset: int = 0,
     ) -> List[CapturedCall]:
         """Retrieve captured calls."""
+        param_placeholder = self._get_param_placeholder()
         query = "SELECT data FROM captured_calls WHERE 1=1"
         params: List[Any] = []
 
         if function_name:
-            query += " AND function_name = ?"
+            query += f" AND function_name = {param_placeholder}"
             params.append(function_name)
 
         if has_error is not None:
-            query += " AND has_error = ?"
+            query += f" AND has_error = {param_placeholder}"
             params.append(1 if has_error else 0)
 
-        query += " ORDER BY start_time DESC LIMIT ? OFFSET ?"
+        query += f" ORDER BY start_time DESC LIMIT {param_placeholder} OFFSET {param_placeholder}"
         params.extend([limit, offset])
 
-        with sqlite3.connect(str(self.db_path)) as conn:
-            cursor = conn.execute(query, params)
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(query, params)
             rows = cursor.fetchall()
             return [CapturedCall.from_dict(json.loads(row[0])) for row in rows]
 
     def get_stats(self) -> dict:
         """Get capture statistics."""
-        with sqlite3.connect(str(self.db_path)) as conn:
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
             stats = {"total_calls": 0, "by_function": {}, "error_rate": 0.0}
 
             # Total count
-            cursor = conn.execute("SELECT COUNT(*) FROM captured_calls")
-            stats["total_calls"] = cursor.fetchone()[0]
+            cursor.execute("SELECT COUNT(*) FROM captured_calls")
+            row = cursor.fetchone()
+            stats["total_calls"] = row[0] if isinstance(row, (list, tuple)) else row["count"]
 
             if stats["total_calls"] == 0:
                 return stats
 
             # By function
-            cursor = conn.execute("""
+            cursor.execute("""
                 SELECT function_name, COUNT(*) as count
                 FROM captured_calls
                 GROUP BY function_name
                 ORDER BY count DESC
                 LIMIT 20
             """)
-            stats["by_function"] = {row[0]: row[1] for row in cursor.fetchall()}
+            for row in cursor.fetchall():
+                func_name = row[0] if isinstance(row, (list, tuple)) else row["function_name"]
+                count = row[1] if isinstance(row, (list, tuple)) else row["count"]
+                stats["by_function"][func_name] = count
 
             # Error rate
-            cursor = conn.execute("""
+            cursor.execute("""
                 SELECT
                     SUM(CASE WHEN has_error = 1 THEN 1 ELSE 0 END) as errors,
                     COUNT(*) as total
                 FROM captured_calls
             """)
             row = cursor.fetchone()
-            if row[1] > 0:
-                stats["error_rate"] = round(row[0] / row[1] * 100, 2)
+            if isinstance(row, (list, tuple)):
+                errors, total = row[0], row[1]
+            else:
+                errors, total = row["errors"], row["total"]
+            
+            if total > 0:
+                stats["error_rate"] = round(errors / total * 100, 2)
 
             # Average duration
-            cursor = conn.execute("SELECT AVG(duration_ms) FROM captured_calls")
-            avg = cursor.fetchone()[0]
+            cursor.execute("SELECT AVG(duration_ms) FROM captured_calls")
+            row = cursor.fetchone()
+            avg = row[0] if isinstance(row, (list, tuple)) else row.get("avg", 0)
             stats["avg_duration_ms"] = round(avg, 2) if avg else 0.0
 
             return stats
 
     def clear(self) -> int:
         """Clear all captured calls."""
-        with sqlite3.connect(str(self.db_path)) as conn:
-            cursor = conn.execute("DELETE FROM captured_calls")
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM captured_calls")
             conn.commit()
             return cursor.rowcount
 
@@ -275,10 +419,10 @@ def get_storage() -> CaptureStorage:
     return _storage
 
 
-def configure_storage(db_path: str) -> CaptureStorage:
-    """Configure the capture storage path."""
+def configure_storage(db_path: Optional[str] = None, db_config: Optional[dict] = None) -> CaptureStorage:
+    """Configure the capture storage path or config."""
     global _storage
-    _storage = CaptureStorage(db_path)
+    _storage = CaptureStorage(db_path=db_path, db_config=db_config)
     return _storage
 
 
