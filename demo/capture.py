@@ -481,11 +481,61 @@ def capture(func: F) -> F:
             call.duration_ms = (time.perf_counter() - start) * 1000
             call.end_time = datetime.now(timezone.utc)
 
-            # Store the call
+            # Check function limiter first (per-function limits)
+            should_store = True
             try:
-                get_storage().store(call)
-            except Exception:
-                pass  # Don't fail the function if capture fails
+                from integrations.ui import get_function_limiter
+                function_limiter = get_function_limiter()
+                if function_limiter and function_limiter._enabled:
+                    if not function_limiter.should_capture(call.function_name):
+                        should_store = False
+            except (ImportError, AttributeError):
+                pass
+            
+            # Check type limiter before storing (if enabled and function limiter allows)
+            if should_store:
+                try:
+                    # Try to import and check type limiter
+                    from integrations.ui import get_type_limiter
+                    type_limiter = get_type_limiter()
+                    if type_limiter and type_limiter._enabled:
+                        # Extract request body from function arguments
+                        # For FastAPI endpoints, the request body is typically in kwargs or first arg
+                        request_body = None
+                        if kwargs:
+                            # Check if any kwarg looks like a request body (Pydantic model or dict)
+                            for value in kwargs.values():
+                                if hasattr(value, 'dict'):  # Pydantic model
+                                    request_body = value.dict()
+                                    break
+                                elif isinstance(value, dict):
+                                    request_body = value
+                                    break
+                        elif args:
+                            # Check first arg if it's a Pydantic model or dict
+                            first_arg = args[0]
+                            if hasattr(first_arg, 'dict'):  # Pydantic model
+                                request_body = first_arg.dict()
+                            elif isinstance(first_arg, dict):
+                                request_body = first_arg
+                        
+                        # Check type limiter
+                        if request_body:
+                            # Use function name as endpoint identifier
+                            endpoint = f"/{func.__module__.split('.')[-1]}/{func.__name__}"
+                            type_allowed, _ = type_limiter.should_capture(endpoint, request_body)
+                            if not type_allowed:
+                                should_store = False
+                except (ImportError, AttributeError):
+                    # Type limiter not available or error checking - allow capture
+                    pass
+
+            # Store the call only if type limiter allows it
+            if should_store:
+                try:
+                    get_storage().store(call)
+                except Exception:
+                    pass  # Don't fail the function if capture fails
 
             # Restore parent context
             CaptureContext.set_current(parent)

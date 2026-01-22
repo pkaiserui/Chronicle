@@ -47,6 +47,14 @@ from starlette.routing import Match
 
 from .sampling import Sampler, get_sampler
 
+# Import type limiter if available (lazy import to avoid circular deps)
+def _get_type_limiter():
+    try:
+        from .ui import get_type_limiter
+        return get_type_limiter()
+    except ImportError:
+        return None
+
 
 @dataclass
 class CaptureConfig:
@@ -439,13 +447,31 @@ class ChronicleMiddleware(BaseHTTPMiddleware):
         call_next: RequestResponseEndpoint,
     ) -> Response:
         """Process the request and capture details."""
+        # Early exit: check if this path should be excluded before any processing
+        path = request.url.path
+        path_lower = path.lower()
+        
+        # Hardcoded exclusion for dashboard paths (most common case)
+        if path_lower.startswith("/_chronicle"):
+            return await call_next(request)
+        
+        # Check exclusion list from config
+        sampler = self._get_sampler()
+        for excluded in sampler.config.never_capture_endpoints:
+            excluded_lower = excluded.lower().rstrip("/")
+            path_normalized = path_lower.rstrip("/")
+            # Match exact path or any sub-path (must start with excluded path + "/")
+            if (path_normalized == excluded_lower or 
+                path_lower.startswith(excluded_lower + "/")):
+                # Skip all capture processing for excluded endpoints
+                return await call_next(request)
+        
         start_time = time.perf_counter()
         request_id = str(uuid.uuid4())
         timestamp = datetime.now(timezone.utc)
 
         # Extract request details early
         method = request.method
-        path = request.url.path
         full_url = str(request.url)
         query_params = self._get_query_params(request)
         path_params = self._get_path_params(request)
@@ -491,6 +517,16 @@ class ChronicleMiddleware(BaseHTTPMiddleware):
                 query_params=query_params,
             )
 
+            # Check type limits BEFORE doing any capture work
+            if should_capture:
+                type_limiter = _get_type_limiter()
+                if type_limiter and type_limiter._enabled:
+                    type_allowed, type_value = type_limiter.should_capture(path, request_body)
+                    if not type_allowed:
+                        # Type limit reached - skip capture entirely
+                        # This prevents the request from being stored
+                        should_capture = False
+            
             if should_capture:
                 # Capture response details
                 response_headers = None
