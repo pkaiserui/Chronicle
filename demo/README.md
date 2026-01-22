@@ -28,6 +28,8 @@ uvicorn demo.api:app --reload --port 8000
 
 The API will be available at `http://localhost:8000` with interactive docs at `http://localhost:8000/docs`.
 
+**Chronicle Dashboard**: Access the built-in Chronicle dashboard at `http://localhost:8000/_chronicle` to view and configure capture settings in real-time.
+
 ### 3. Start the Streamlit Dashboard
 
 ```bash
@@ -118,13 +120,63 @@ All API endpoint functions are decorated with `@capture`, recording:
 - OpenTelemetry trace/span IDs
 - Dependency calls (DB, HTTP, etc.)
 
+### Chronicle Dashboard UI
+
+The demo includes Chronicle's built-in dashboard at `/_chronicle` with:
+
+- **Real-time Statistics**: View capture counts, error rates, and sampling stats
+- **Sampling Configuration**: Adjust sampling strategy, rates, and thresholds
+- **Type-Based Limits**: Configure capture limits per payload type value
+  - Set field path (e.g., `"type"` or `"payload.type"`)
+  - Set limit per type (default: 5000)
+  - Configure action when limit reached (stop or sample)
+- **Function-Based Limits**: Configure capture limits per function name
+  - Set limit per function (default: 5000)
+  - Prevents database storage after limit reached
+- **Endpoint Management**: View all endpoints and configure per-endpoint limits
+- **Alerts**: See notifications when limits are reached
+- **Recent Captures**: Browse captured requests with filtering
+
+### Capture Limiters
+
+The demo is pre-configured with two capture limiters:
+
+1. **Type-Based Limiting**: Limits captures per payload `type` field value
+   - Default: 5000 captures per unique type
+   - Stops recording that type when limit reached
+   - Configurable via dashboard
+
+2. **Function-Based Limiting**: Limits captures per function name
+   - Default: 5000 captures per function
+   - Stops storing to database when limit reached
+   - Prevents database bloat from high-traffic functions
+   - Configurable via dashboard
+
+Both limiters can be adjusted in real-time through the dashboard without restarting the server.
+
 ### Dashboard Pages
+
+#### Streamlit Dashboard (Port 8501)
 
 1. **Dashboard** - Real-time overview with task and capture statistics
 2. **Task Queue** - Browse, filter, and manage tasks; create new tasks
 3. **Chronicle Captures** - Explore captured function calls with full details
 4. **Traffic Simulator** - Control the load generator, adjust weights
 5. **Analysis** - Function statistics, error patterns, duration distributions
+
+#### Chronicle Dashboard (Port 8000, `/_chronicle`)
+
+A lightweight web dashboard for real-time capture management:
+
+1. **Capture Stats** - Total captures, errors, duration, sampling stats
+2. **Sampling Settings** - Adjust strategy, rates, and thresholds
+3. **Type-Based Limits** - Configure limits per payload type value
+4. **Function-Based Limits** - Configure limits per function name
+5. **Endpoint Configuration** - View and configure per-endpoint limits
+6. **Captures by Type** - Monitor type capture counts and limits
+7. **Captures by Function** - Monitor function capture counts and limits
+8. **Alerts** - Notifications when limits are reached
+9. **Recent Captures** - Browse captured HTTP requests
 
 ## API Endpoints
 
@@ -154,6 +206,13 @@ All API endpoint functions are decorated with `@capture`, recording:
 |--------|----------|-------------|
 | GET | `/captures` | List captured calls |
 | GET | `/captures/functions` | List captured function names |
+| GET | `/_chronicle` | Chronicle Dashboard UI |
+| GET | `/_chronicle/api/stats` | Get capture statistics |
+| GET | `/_chronicle/api/type-limits` | Get type limit configuration |
+| POST | `/_chronicle/api/type-limits` | Update type limit configuration |
+| GET | `/_chronicle/api/function-limits` | Get function limit configuration |
+| POST | `/_chronicle/api/function-limits` | Update function limit configuration |
+| GET | `/_chronicle/api/endpoints` | List all captured endpoints |
 
 ### Admin
 
@@ -180,6 +239,67 @@ All API endpoint functions are decorated with `@capture`, recording:
 - `chronicle_captures.db` - Function capture storage
 
 Both are SQLite files created automatically in the working directory.
+
+## Capture Limiters
+
+### Type-Based Limits
+
+Limit captures based on payload field values. Example:
+
+```bash
+# Request with type field
+curl -X POST http://localhost:8000/tasks \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Welcome Email",
+    "priority": "high",
+    "type": "USER_SIGNUP",
+    "payload": {"email": "user@example.com"}
+  }'
+```
+
+Configure in code:
+```python
+from Chronicle.integrations import configure_type_limits, TypeLimitConfig
+
+configure_type_limits(TypeLimitConfig(
+    field_path="type",         # Extract from top-level "type" field
+    limit_per_type=5000,       # Capture up to 5000 of each type
+    alert_on_limit=True,
+    limit_action="stop",
+))
+```
+
+Or configure via dashboard at `/_chronicle`:
+- Enable "Type-Based Limits"
+- Set field path (e.g., `"type"` or `"payload.type"`)
+- Set limit per type
+- Choose action when limit reached
+
+### Function-Based Limits
+
+Limit captures per function name to prevent database bloat:
+
+```python
+from Chronicle.integrations import configure_function_limits, FunctionLimitConfig
+
+configure_function_limits(FunctionLimitConfig(
+    limit_per_function=5000,   # Capture up to 5000 per function
+    alert_on_limit=True,
+    limit_action="stop",       # Stop storing to DB when limit hit
+))
+```
+
+Or configure via dashboard at `/_chronicle`:
+- Enable "Function-Based Limits"
+- Set limit per function
+- Choose action when limit reached
+
+When a function reaches its limit, it will:
+- Continue executing normally
+- Stop storing captures to the database
+- Show an alert in the dashboard
+- Allow you to reset the limit to resume capturing
 
 ## Example Usage
 

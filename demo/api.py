@@ -25,9 +25,15 @@ from pydantic import BaseModel, Field
 # Add parent directory to path for Chronicle imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from .capture import capture, configure_storage, get_storage
-from .database import TaskDatabase
-from .models import TaskCreate, TaskPriority, TaskStatus, TaskUpdate
+# Support running from either the demo directory or parent directory
+try:
+    from .capture import capture, configure_storage, get_storage
+    from .database import TaskDatabase
+    from .models import TaskCreate, TaskPriority, TaskStatus, TaskUpdate
+except ImportError:
+    from capture import capture, configure_storage, get_storage
+    from database import TaskDatabase
+    from models import TaskCreate, TaskPriority, TaskStatus, TaskUpdate
 
 # Import Chronicle middleware and sampling
 try:
@@ -39,6 +45,13 @@ try:
         get_capture_stats,
         get_captured_requests,
         clear_captured_requests,
+        # UI Dashboard
+        mount_chronicle_dashboard,
+        configure_type_limits,
+        TypeLimitConfig,
+        # Function Limits
+        configure_function_limits,
+        FunctionLimitConfig,
     )
     from integrations.fastapi import add_capture_callback
     CHRONICLE_MIDDLEWARE_AVAILABLE = True
@@ -133,7 +146,7 @@ if CHRONICLE_MIDDLEWARE_AVAILABLE:
         always_capture_slow=True,
         latency_threshold_ms=500,  # Capture slow requests
         max_patterns_per_endpoint=50,  # Track up to 50 unique patterns
-        never_capture_endpoints={"/health", "/metrics", "/docs", "/openapi.json"},
+        never_capture_endpoints={"/health", "/metrics", "/docs", "/openapi.json", "/_chronicle"},
     ))
 
     # Add the middleware
@@ -144,9 +157,36 @@ if CHRONICLE_MIDDLEWARE_AVAILABLE:
         max_body_size=65536,  # 64KB limit
     )
 
+    # Configure type-based capture limits
+    # This allows limiting captures per "type" field value (top-level in request body)
+    configure_type_limits(TypeLimitConfig(
+        field_path="type",         # Extract type from top-level "type" field
+        limit_per_type=5000,       # Capture up to 5000 of each type
+        alert_on_limit=True,       # Show alert when limit reached
+        limit_action="stop",       # Stop recording that type when limit hit
+    ))
+    
+    # Configure function-based capture limits
+    # This limits captures per function name (prevents DB storage after limit)
+    configure_function_limits(FunctionLimitConfig(
+        limit_per_function=5000,   # Capture up to 5000 per function
+        alert_on_limit=True,       # Show alert when limit reached
+        limit_action="stop",       # Stop recording to DB when limit hit
+    ))
+
+    # Mount the Chronicle dashboard UI at /_chronicle
+    # Access at http://localhost:8000/_chronicle
+    mount_chronicle_dashboard(
+        app,
+        path="/_chronicle",
+        enabled=True,  # Set to False or use env var to disable in production
+    )
+
 # Instrument with OpenTelemetry
 if OTEL_ENABLED:
-    FastAPIInstrumentor.instrument_app(app)
+    # Exclude dashboard, health, and static docs from OTel tracing to reduce noise
+    excluded_urls = "health,metrics,_chronicle,docs,openapi.json"
+    FastAPIInstrumentor.instrument_app(app, excluded_urls=excluded_urls)
 
 
 # Pydantic models for API
@@ -471,6 +511,8 @@ def health_check() -> dict:
     return {
         "status": "healthy",
         "otel_enabled": OTEL_ENABLED,
+        "chronicle_middleware": CHRONICLE_MIDDLEWARE_AVAILABLE,
+        "chronicle_dashboard": "/_chronicle" if CHRONICLE_MIDDLEWARE_AVAILABLE else None,
         "timestamp": datetime.utcnow().isoformat(),
     }
 

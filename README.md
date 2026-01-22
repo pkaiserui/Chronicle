@@ -277,6 +277,8 @@ sampler = AdaptiveSampler(
 
 ## Integration with FastAPI
 
+### Basic Integration
+
 ```python
 from fastapi import FastAPI
 from Chronicle import capture, configure, CaptureConfig
@@ -305,6 +307,106 @@ def process_payment(payment_id: str, amount: float) -> dict:
 async def create_payment(payment_id: str, amount: float):
     return process_payment(payment_id, amount)
 ```
+
+### Chronicle Dashboard UI
+
+Chronicle includes an optional lightweight web dashboard for viewing and adjusting capture settings in real-time:
+
+```python
+from fastapi import FastAPI
+from Chronicle.integrations import (
+    ChronicleMiddleware,
+    mount_chronicle_dashboard,
+    configure_type_limits,
+    configure_function_limits,
+    TypeLimitConfig,
+    FunctionLimitConfig,
+    SamplingConfig,
+    SamplingStrategy,
+    configure_sampling,
+)
+
+app = FastAPI()
+
+# Add Chronicle middleware for automatic HTTP request/response capture
+app.add_middleware(ChronicleMiddleware)
+
+# Configure sampling strategy
+configure_sampling(SamplingConfig(
+    strategy=SamplingStrategy.CLUSTERING,
+    base_rate=0.2,  # 20% baseline sampling
+    always_capture_errors=True,
+    always_capture_slow=True,
+    latency_threshold_ms=500,
+))
+
+# Configure type-based capture limits
+# Limits captures per payload "type" field value
+configure_type_limits(TypeLimitConfig(
+    field_path="type",         # Extract from request body.type
+    limit_per_type=5000,       # Capture up to 5000 of each type
+    alert_on_limit=True,       # Show alert when limit reached
+    limit_action="stop",       # Stop recording that type when limit hit
+))
+
+# Configure function-based capture limits
+# Limits captures per function name (prevents DB storage after limit)
+configure_function_limits(FunctionLimitConfig(
+    limit_per_function=5000,   # Capture up to 5000 per function
+    alert_on_limit=True,       # Show alert when limit reached
+    limit_action="stop",       # Stop recording to DB when limit hit
+))
+
+# Mount the dashboard at /_chronicle
+mount_chronicle_dashboard(app, path="/_chronicle", enabled=True)
+```
+
+Access the dashboard at `http://localhost:8000/_chronicle` to:
+- View real-time capture statistics
+- Adjust sampling strategy and rates
+- Configure type-based limits per endpoint
+- Configure function-based limits
+- Monitor capture counts and alerts
+- Reset limits to resume capturing
+
+### Capture Limiters
+
+Chronicle provides two types of capture limiters to control storage volume:
+
+#### Type-Based Limits
+
+Limit captures based on payload field values (e.g., `type`, `event_type`):
+
+```python
+from Chronicle.integrations import configure_type_limits, TypeLimitConfig
+
+configure_type_limits(TypeLimitConfig(
+    field_path="type",              # JSON path to extract type (e.g., "type", "payload.type")
+    limit_per_type=5000,            # Maximum captures per unique type value
+    alert_on_limit=True,            # Create alert when limit reached
+    limit_action="stop",             # "stop" or "sample" (sample at low rate)
+    overflow_sample_rate=0.01,      # Sample rate if action is "sample"
+))
+```
+
+Example: If your request body has `{"type": "USER_SIGNUP", ...}`, Chronicle will capture up to 5000 requests with `type="USER_SIGNUP"`, then stop recording that specific type.
+
+#### Function-Based Limits
+
+Limit captures per function name to prevent database bloat:
+
+```python
+from Chronicle.integrations import configure_function_limits, FunctionLimitConfig
+
+configure_function_limits(FunctionLimitConfig(
+    limit_per_function=5000,         # Maximum captures per function
+    alert_on_limit=True,            # Create alert when limit reached
+    limit_action="stop",             # "stop" or "sample"
+    overflow_sample_rate=0.01,      # Sample rate if action is "sample"
+))
+```
+
+Example: The `create_task` function will be captured up to 5000 times, then stop storing to the database. The function still executes normally, but captures are no longer persisted.
 
 ## CLI Usage
 
