@@ -1,83 +1,227 @@
-"""SQLite database layer for the Task Queue System."""
+"""Database layer for the Task Queue System supporting SQLite and PostgreSQL."""
 
 import json
+import os
 import sqlite3
 from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Generator, List, Optional
+from typing import Any, Generator, List, Optional, Union
+
+try:
+    import psycopg2
+    from psycopg2.extras import RealDictCursor
+    PSYCOPG2_AVAILABLE = True
+except ImportError:
+    PSYCOPG2_AVAILABLE = False
+
+from dotenv import load_dotenv
 
 from .models import Task, TaskCreate, TaskPriority, TaskStatus, TaskUpdate
 
+# Load environment variables
+load_dotenv()
+
+
+def get_db_config() -> dict:
+    """Get database configuration from environment variables."""
+    db_type = os.getenv("DB_TYPE", "sqlite").lower()
+    
+    if db_type == "postgres":
+        # Check for full DSN first
+        dsn = os.getenv("POSTGRES_DSN")
+        if dsn:
+            return {"type": "postgres", "dsn": dsn}
+        
+        # Build DSN from individual components
+        return {
+            "type": "postgres",
+            "host": os.getenv("POSTGRES_HOST", "localhost"),
+            "port": int(os.getenv("POSTGRES_PORT", "5432")),
+            "user": os.getenv("POSTGRES_USER", "chronicle_user"),
+            "password": os.getenv("POSTGRES_PASSWORD", "chronicle_password"),
+            "dbname": os.getenv("POSTGRES_DB", "chronicle_db"),
+        }
+    else:
+        # SQLite default
+        return {
+            "type": "sqlite",
+            "db_path": os.getenv("SQLITE_TASKS_DB", "demo_tasks.db"),
+        }
+
 
 class TaskDatabase:
-    """SQLite-backed task storage."""
+    """Task storage supporting both SQLite and PostgreSQL."""
 
-    def __init__(self, db_path: str = "demo_tasks.db"):
-        self.db_path = Path(db_path)
+    def __init__(self, db_path: Optional[str] = None, db_config: Optional[dict] = None):
+        """
+        Initialize the database.
+        
+        Args:
+            db_path: For SQLite, the path to the database file (deprecated, use db_config)
+            db_config: Database configuration dict (if None, reads from environment)
+        """
+        if db_config is None:
+            db_config = get_db_config()
+        
+        self.db_config = db_config
+        self.db_type = db_config["type"]
+        
+        if self.db_type == "postgres":
+            if not PSYCOPG2_AVAILABLE:
+                raise ImportError(
+                    "psycopg2-binary is required for PostgreSQL support. "
+                    "Install it with: pip install psycopg2-binary"
+                )
+            # Store connection parameters
+            if "dsn" in db_config:
+                self.connection_string = db_config["dsn"]
+            else:
+                self.connection_string = (
+                    f"host={db_config['host']} "
+                    f"port={db_config['port']} "
+                    f"user={db_config['user']} "
+                    f"password={db_config['password']} "
+                    f"dbname={db_config['dbname']}"
+                )
+        else:
+            # SQLite
+            self.db_path = Path(db_path or db_config.get("db_path", "demo_tasks.db"))
+        
         self._init_db()
 
     def _init_db(self) -> None:
         """Initialize the database schema."""
         with self._get_connection() as conn:
-            conn.execute("""
-                CREATE TABLE IF NOT EXISTS tasks (
-                    id TEXT PRIMARY KEY,
-                    title TEXT NOT NULL,
-                    description TEXT DEFAULT '',
-                    status TEXT NOT NULL DEFAULT 'pending',
-                    priority TEXT NOT NULL DEFAULT 'medium',
-                    payload TEXT DEFAULT '{}',
-                    result TEXT,
-                    error_message TEXT,
-                    created_at TEXT NOT NULL,
-                    updated_at TEXT NOT NULL,
-                    claimed_at TEXT,
-                    completed_at TEXT,
-                    claimed_by TEXT,
-                    retry_count INTEGER DEFAULT 0,
-                    max_retries INTEGER DEFAULT 3
-                )
-            """)
-            conn.execute("""
-                CREATE INDEX IF NOT EXISTS idx_tasks_status ON tasks(status)
-            """)
-            conn.execute("""
-                CREATE INDEX IF NOT EXISTS idx_tasks_priority ON tasks(priority)
-            """)
-            conn.execute("""
-                CREATE INDEX IF NOT EXISTS idx_tasks_created_at ON tasks(created_at)
-            """)
+            cursor = conn.cursor()
+            
+            if self.db_type == "postgres":
+                # PostgreSQL schema
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS tasks (
+                        id VARCHAR(255) PRIMARY KEY,
+                        title VARCHAR(500) NOT NULL,
+                        description TEXT DEFAULT '',
+                        status VARCHAR(50) NOT NULL DEFAULT 'pending',
+                        priority VARCHAR(50) NOT NULL DEFAULT 'medium',
+                        payload TEXT DEFAULT '{}',
+                        result TEXT,
+                        error_message TEXT,
+                        created_at TIMESTAMP NOT NULL,
+                        updated_at TIMESTAMP NOT NULL,
+                        claimed_at TIMESTAMP,
+                        completed_at TIMESTAMP,
+                        claimed_by VARCHAR(255),
+                        retry_count INTEGER DEFAULT 0,
+                        max_retries INTEGER DEFAULT 3
+                    )
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_tasks_status ON tasks(status)
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_tasks_priority ON tasks(priority)
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_tasks_created_at ON tasks(created_at)
+                """)
+            else:
+                # SQLite schema
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS tasks (
+                        id TEXT PRIMARY KEY,
+                        title TEXT NOT NULL,
+                        description TEXT DEFAULT '',
+                        status TEXT NOT NULL DEFAULT 'pending',
+                        priority TEXT NOT NULL DEFAULT 'medium',
+                        payload TEXT DEFAULT '{}',
+                        result TEXT,
+                        error_message TEXT,
+                        created_at TEXT NOT NULL,
+                        updated_at TEXT NOT NULL,
+                        claimed_at TEXT,
+                        completed_at TEXT,
+                        claimed_by TEXT,
+                        retry_count INTEGER DEFAULT 0,
+                        max_retries INTEGER DEFAULT 3
+                    )
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_tasks_status ON tasks(status)
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_tasks_priority ON tasks(priority)
+                """)
+                cursor.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_tasks_created_at ON tasks(created_at)
+                """)
+            
             conn.commit()
 
     @contextmanager
-    def _get_connection(self) -> Generator[sqlite3.Connection, None, None]:
+    def _get_connection(self) -> Generator[Any, None, None]:
         """Get a database connection."""
-        conn = sqlite3.connect(str(self.db_path))
-        conn.row_factory = sqlite3.Row
-        try:
-            yield conn
-        finally:
-            conn.close()
+        if self.db_type == "postgres":
+            conn = psycopg2.connect(self.connection_string)
+            try:
+                yield conn
+            finally:
+                conn.close()
+        else:
+            conn = sqlite3.connect(str(self.db_path))
+            conn.row_factory = sqlite3.Row
+            try:
+                yield conn
+            finally:
+                conn.close()
 
-    def _row_to_task(self, row: sqlite3.Row) -> Task:
+    def _get_param_placeholder(self) -> str:
+        """Get the parameter placeholder for the current database type."""
+        return "%s" if self.db_type == "postgres" else "?"
+
+    def _row_to_task(self, row: Any) -> Task:
         """Convert a database row to a Task object."""
+        # Handle both sqlite3.Row and psycopg2 RealDictRow
+        if hasattr(row, "keys"):
+            row_dict = dict(row)
+        else:
+            # Fallback for tuple rows
+            row_dict = {
+                "id": row[0], "title": row[1], "description": row[2],
+                "status": row[3], "priority": row[4], "payload": row[5],
+                "result": row[6], "error_message": row[7],
+                "created_at": row[8], "updated_at": row[9],
+                "claimed_at": row[10], "completed_at": row[11],
+                "claimed_by": row[12], "retry_count": row[13],
+                "max_retries": row[14],
+            }
+        
+        # Parse datetime fields
+        def parse_datetime(value: Any) -> Optional[datetime]:
+            if value is None:
+                return None
+            if isinstance(value, datetime):
+                return value
+            if isinstance(value, str):
+                return datetime.fromisoformat(value.replace("Z", "+00:00"))
+            return None
+        
         return Task(
-            id=row["id"],
-            title=row["title"],
-            description=row["description"] or "",
-            status=TaskStatus(row["status"]),
-            priority=TaskPriority(row["priority"]),
-            payload=json.loads(row["payload"] or "{}"),
-            result=json.loads(row["result"]) if row["result"] else None,
-            error_message=row["error_message"],
-            created_at=datetime.fromisoformat(row["created_at"]),
-            updated_at=datetime.fromisoformat(row["updated_at"]),
-            claimed_at=datetime.fromisoformat(row["claimed_at"]) if row["claimed_at"] else None,
-            completed_at=datetime.fromisoformat(row["completed_at"]) if row["completed_at"] else None,
-            claimed_by=row["claimed_by"],
-            retry_count=row["retry_count"] or 0,
-            max_retries=row["max_retries"] or 3,
+            id=row_dict["id"],
+            title=row_dict["title"],
+            description=row_dict.get("description") or "",
+            status=TaskStatus(row_dict["status"]),
+            priority=TaskPriority(row_dict["priority"]),
+            payload=json.loads(row_dict.get("payload") or "{}"),
+            result=json.loads(row_dict["result"]) if row_dict.get("result") else None,
+            error_message=row_dict.get("error_message"),
+            created_at=parse_datetime(row_dict["created_at"]),
+            updated_at=parse_datetime(row_dict["updated_at"]),
+            claimed_at=parse_datetime(row_dict.get("claimed_at")),
+            completed_at=parse_datetime(row_dict.get("completed_at")),
+            claimed_by=row_dict.get("claimed_by"),
+            retry_count=row_dict.get("retry_count") or 0,
+            max_retries=row_dict.get("max_retries") or 3,
         )
 
     def create_task(self, task_create: TaskCreate) -> Task:
@@ -96,14 +240,19 @@ class TaskDatabase:
             updated_at=now,
         )
 
+        param_placeholder = self._get_param_placeholder()
+        created_at_str = now.isoformat() if self.db_type == "sqlite" else now
+        updated_at_str = now.isoformat() if self.db_type == "sqlite" else now
+
         with self._get_connection() as conn:
-            conn.execute(
-                """
+            cursor = conn.cursor()
+            cursor.execute(
+                f"""
                 INSERT INTO tasks (
                     id, title, description, status, priority, payload,
                     result, error_message, created_at, updated_at,
                     claimed_at, completed_at, claimed_by, retry_count, max_retries
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES ({', '.join([param_placeholder] * 15)})
                 """,
                 (
                     task.id,
@@ -114,8 +263,8 @@ class TaskDatabase:
                     json.dumps(task.payload),
                     None,
                     None,
-                    task.created_at.isoformat(),
-                    task.updated_at.isoformat(),
+                    created_at_str,
+                    updated_at_str,
                     None,
                     None,
                     None,
@@ -129,8 +278,16 @@ class TaskDatabase:
 
     def get_task(self, task_id: str) -> Optional[Task]:
         """Get a task by ID."""
+        param_placeholder = self._get_param_placeholder()
         with self._get_connection() as conn:
-            cursor = conn.execute("SELECT * FROM tasks WHERE id = ?", (task_id,))
+            cursor = conn.cursor()
+            if self.db_type == "postgres":
+                cursor.execute(
+                    f"SELECT * FROM tasks WHERE id = {param_placeholder}",
+                    (task_id,)
+                )
+            else:
+                cursor.execute(f"SELECT * FROM tasks WHERE id = {param_placeholder}", (task_id,))
             row = cursor.fetchone()
             return self._row_to_task(row) if row else None
 
@@ -142,23 +299,26 @@ class TaskDatabase:
         offset: int = 0,
     ) -> List[Task]:
         """List tasks with optional filtering."""
+        param_placeholder = self._get_param_placeholder()
         query = "SELECT * FROM tasks WHERE 1=1"
         params: List = []
 
         if status:
-            query += " AND status = ?"
+            query += f" AND status = {param_placeholder}"
             params.append(status.value)
 
         if priority:
-            query += " AND priority = ?"
+            query += f" AND priority = {param_placeholder}"
             params.append(priority.value)
 
-        query += " ORDER BY created_at DESC LIMIT ? OFFSET ?"
+        query += f" ORDER BY created_at DESC LIMIT {param_placeholder} OFFSET {param_placeholder}"
         params.extend([limit, offset])
 
         with self._get_connection() as conn:
-            cursor = conn.execute(query, params)
-            return [self._row_to_task(row) for row in cursor.fetchall()]
+            cursor = conn.cursor()
+            cursor.execute(query, params)
+            rows = cursor.fetchall()
+            return [self._row_to_task(row) for row in rows]
 
     def update_task(self, task_id: str, update: TaskUpdate) -> Optional[Task]:
         """Update a task."""
@@ -166,33 +326,37 @@ class TaskDatabase:
         if not task:
             return None
 
+        param_placeholder = self._get_param_placeholder()
         updates = []
         params = []
 
         if update.title is not None:
-            updates.append("title = ?")
+            updates.append(f"title = {param_placeholder}")
             params.append(update.title)
 
         if update.description is not None:
-            updates.append("description = ?")
+            updates.append(f"description = {param_placeholder}")
             params.append(update.description)
 
         if update.priority is not None:
-            updates.append("priority = ?")
+            updates.append(f"priority = {param_placeholder}")
             params.append(update.priority.value)
 
         if update.payload is not None:
-            updates.append("payload = ?")
+            updates.append(f"payload = {param_placeholder}")
             params.append(json.dumps(update.payload))
 
         if updates:
-            updates.append("updated_at = ?")
-            params.append(datetime.utcnow().isoformat())
+            updated_at = datetime.utcnow()
+            updated_at_str = updated_at.isoformat() if self.db_type == "sqlite" else updated_at
+            updates.append(f"updated_at = {param_placeholder}")
+            params.append(updated_at_str)
             params.append(task_id)
 
             with self._get_connection() as conn:
-                conn.execute(
-                    f"UPDATE tasks SET {', '.join(updates)} WHERE id = ?",
+                cursor = conn.cursor()
+                cursor.execute(
+                    f"UPDATE tasks SET {', '.join(updates)} WHERE id = {param_placeholder}",
                     params,
                 )
                 conn.commit()
@@ -201,27 +365,33 @@ class TaskDatabase:
 
     def delete_task(self, task_id: str) -> bool:
         """Delete a task."""
+        param_placeholder = self._get_param_placeholder()
         with self._get_connection() as conn:
-            cursor = conn.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
+            cursor = conn.cursor()
+            cursor.execute(f"DELETE FROM tasks WHERE id = {param_placeholder}", (task_id,))
             conn.commit()
             return cursor.rowcount > 0
 
     def claim_task(self, task_id: str, worker_id: str) -> Optional[Task]:
         """Claim a pending task for processing."""
         now = datetime.utcnow()
+        now_str = now.isoformat() if self.db_type == "sqlite" else now
+        param_placeholder = self._get_param_placeholder()
 
         with self._get_connection() as conn:
-            cursor = conn.execute(
-                """
+            cursor = conn.cursor()
+            cursor.execute(
+                f"""
                 UPDATE tasks
-                SET status = ?, claimed_at = ?, claimed_by = ?, updated_at = ?
-                WHERE id = ? AND status = ?
+                SET status = {param_placeholder}, claimed_at = {param_placeholder}, 
+                    claimed_by = {param_placeholder}, updated_at = {param_placeholder}
+                WHERE id = {param_placeholder} AND status = {param_placeholder}
                 """,
                 (
                     TaskStatus.CLAIMED.value,
-                    now.isoformat(),
+                    now_str,
                     worker_id,
-                    now.isoformat(),
+                    now_str,
                     task_id,
                     TaskStatus.PENDING.value,
                 ),
@@ -235,18 +405,19 @@ class TaskDatabase:
 
     def claim_next_task(self, worker_id: str, priority: Optional[TaskPriority] = None) -> Optional[Task]:
         """Claim the next available pending task."""
-        query = """
+        param_placeholder = self._get_param_placeholder()
+        query = f"""
             SELECT id FROM tasks
-            WHERE status = ?
+            WHERE status = {param_placeholder}
         """
         params: List = [TaskStatus.PENDING.value]
 
         if priority:
-            query += " AND priority = ?"
+            query += f" AND priority = {param_placeholder}"
             params.append(priority.value)
 
         # Priority order: critical > high > medium > low
-        query += """
+        query += f"""
             ORDER BY
                 CASE priority
                     WHEN 'critical' THEN 0
@@ -259,28 +430,33 @@ class TaskDatabase:
         """
 
         with self._get_connection() as conn:
-            cursor = conn.execute(query, params)
+            cursor = conn.cursor()
+            cursor.execute(query, params)
             row = cursor.fetchone()
 
             if not row:
                 return None
 
-            return self.claim_task(row["id"], worker_id)
+            task_id = row[0] if isinstance(row, (list, tuple)) else row["id"]
+            return self.claim_task(task_id, worker_id)
 
     def start_processing(self, task_id: str) -> Optional[Task]:
         """Mark a claimed task as processing."""
         now = datetime.utcnow()
+        now_str = now.isoformat() if self.db_type == "sqlite" else now
+        param_placeholder = self._get_param_placeholder()
 
         with self._get_connection() as conn:
-            cursor = conn.execute(
-                """
+            cursor = conn.cursor()
+            cursor.execute(
+                f"""
                 UPDATE tasks
-                SET status = ?, updated_at = ?
-                WHERE id = ? AND status = ?
+                SET status = {param_placeholder}, updated_at = {param_placeholder}
+                WHERE id = {param_placeholder} AND status = {param_placeholder}
                 """,
                 (
                     TaskStatus.PROCESSING.value,
-                    now.isoformat(),
+                    now_str,
                     task_id,
                     TaskStatus.CLAIMED.value,
                 ),
@@ -295,19 +471,23 @@ class TaskDatabase:
     def complete_task(self, task_id: str, result: Optional[dict] = None) -> Optional[Task]:
         """Mark a task as completed."""
         now = datetime.utcnow()
+        now_str = now.isoformat() if self.db_type == "sqlite" else now
+        param_placeholder = self._get_param_placeholder()
 
         with self._get_connection() as conn:
-            cursor = conn.execute(
-                """
+            cursor = conn.cursor()
+            cursor.execute(
+                f"""
                 UPDATE tasks
-                SET status = ?, result = ?, completed_at = ?, updated_at = ?
-                WHERE id = ? AND status = ?
+                SET status = {param_placeholder}, result = {param_placeholder}, 
+                    completed_at = {param_placeholder}, updated_at = {param_placeholder}
+                WHERE id = {param_placeholder} AND status = {param_placeholder}
                 """,
                 (
                     TaskStatus.COMPLETED.value,
                     json.dumps(result) if result else None,
-                    now.isoformat(),
-                    now.isoformat(),
+                    now_str,
+                    now_str,
                     task_id,
                     TaskStatus.PROCESSING.value,
                 ),
@@ -326,6 +506,8 @@ class TaskDatabase:
             return None
 
         now = datetime.utcnow()
+        now_str = now.isoformat() if self.db_type == "sqlite" else now
+        param_placeholder = self._get_param_placeholder()
 
         # Check if we should retry
         if task.retry_count < task.max_retries:
@@ -336,18 +518,20 @@ class TaskDatabase:
             new_retry_count = task.retry_count
 
         with self._get_connection() as conn:
-            conn.execute(
-                """
+            cursor = conn.cursor()
+            cursor.execute(
+                f"""
                 UPDATE tasks
-                SET status = ?, error_message = ?, retry_count = ?,
-                    claimed_at = NULL, claimed_by = NULL, updated_at = ?
-                WHERE id = ?
+                SET status = {param_placeholder}, error_message = {param_placeholder}, 
+                    retry_count = {param_placeholder},
+                    claimed_at = NULL, claimed_by = NULL, updated_at = {param_placeholder}
+                WHERE id = {param_placeholder}
                 """,
                 (
                     new_status.value,
                     error_message,
                     new_retry_count,
-                    now.isoformat(),
+                    now_str,
                     task_id,
                 ),
             )
@@ -358,6 +542,7 @@ class TaskDatabase:
     def get_stats(self) -> dict:
         """Get task queue statistics."""
         with self._get_connection() as conn:
+            cursor = conn.cursor()
             stats = {
                 "total": 0,
                 "by_status": {},
@@ -367,19 +552,19 @@ class TaskDatabase:
             }
 
             # Count by status
-            cursor = conn.execute(
-                "SELECT status, COUNT(*) as count FROM tasks GROUP BY status"
-            )
+            cursor.execute("SELECT status, COUNT(*) as count FROM tasks GROUP BY status")
             for row in cursor.fetchall():
-                stats["by_status"][row["status"]] = row["count"]
-                stats["total"] += row["count"]
+                status = row[0] if isinstance(row, (list, tuple)) else row["status"]
+                count = row[1] if isinstance(row, (list, tuple)) else row["count"]
+                stats["by_status"][status] = count
+                stats["total"] += count
 
             # Count by priority
-            cursor = conn.execute(
-                "SELECT priority, COUNT(*) as count FROM tasks GROUP BY priority"
-            )
+            cursor.execute("SELECT priority, COUNT(*) as count FROM tasks GROUP BY priority")
             for row in cursor.fetchall():
-                stats["by_priority"][row["priority"]] = row["count"]
+                priority = row[0] if isinstance(row, (list, tuple)) else row["priority"]
+                count = row[1] if isinstance(row, (list, tuple)) else row["count"]
+                stats["by_priority"][priority] = count
 
             # Calculate failed rate
             if stats["total"] > 0:
@@ -394,6 +579,7 @@ class TaskDatabase:
     def clear_all(self) -> int:
         """Clear all tasks. Returns number of deleted tasks."""
         with self._get_connection() as conn:
-            cursor = conn.execute("DELETE FROM tasks")
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM tasks")
             conn.commit()
             return cursor.rowcount

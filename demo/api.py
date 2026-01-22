@@ -3,23 +3,47 @@ FastAPI backend for the Chronicle Demo Task Queue System.
 
 Provides REST API endpoints for task management with Chronicle capture
 and OpenTelemetry instrumentation.
+
+Now includes ChronicleMiddleware for automatic request/response capture
+with smart sampling support.
 """
 
 from __future__ import annotations
 
 import random
+import sys
 import time
 from contextlib import asynccontextmanager
 from datetime import datetime
+from pathlib import Path
 from typing import List, Optional
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
+# Add parent directory to path for Chronicle imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from .capture import capture, configure_storage, get_storage
 from .database import TaskDatabase
 from .models import TaskCreate, TaskPriority, TaskStatus, TaskUpdate
+
+# Import Chronicle middleware and sampling
+try:
+    from integrations import (
+        ChronicleMiddleware,
+        SamplingConfig,
+        SamplingStrategy,
+        configure_sampling,
+        get_capture_stats,
+        get_captured_requests,
+        clear_captured_requests,
+    )
+    from integrations.fastapi import add_capture_callback
+    CHRONICLE_MIDDLEWARE_AVAILABLE = True
+except ImportError:
+    CHRONICLE_MIDDLEWARE_AVAILABLE = False
 
 # Configure OpenTelemetry
 try:
@@ -64,7 +88,8 @@ def get_db() -> TaskDatabase:
     """Get the database instance."""
     global db
     if db is None:
-        db = TaskDatabase("demo_tasks.db")
+        # TaskDatabase will read config from environment variables
+        db = TaskDatabase()
     return db
 
 
@@ -73,8 +98,10 @@ async def lifespan(app: FastAPI):
     """Application lifespan manager."""
     # Startup
     global db
-    db = TaskDatabase("demo_tasks.db")
-    configure_storage("chronicle_captures.db")
+    # TaskDatabase will read config from environment variables
+    db = TaskDatabase()
+    # CaptureStorage will also read config from environment variables
+    configure_storage()
     yield
     # Shutdown (cleanup if needed)
 
@@ -95,6 +122,27 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Add Chronicle middleware with smart sampling
+if CHRONICLE_MIDDLEWARE_AVAILABLE:
+    # Configure sampling strategy
+    configure_sampling(SamplingConfig(
+        strategy=SamplingStrategy.CLUSTERING,  # Capture diverse patterns
+        base_rate=0.2,  # 20% baseline sampling
+        always_capture_errors=True,  # 100% of errors
+        always_capture_slow=True,
+        latency_threshold_ms=500,  # Capture slow requests
+        max_patterns_per_endpoint=50,  # Track up to 50 unique patterns
+        never_capture_endpoints={"/health", "/metrics", "/docs", "/openapi.json"},
+    ))
+
+    # Add the middleware
+    app.add_middleware(
+        ChronicleMiddleware,
+        capture_request_body=True,
+        capture_response_body=True,
+        max_body_size=65536,  # 64KB limit
+    )
 
 # Instrument with OpenTelemetry
 if OTEL_ENABLED:
@@ -457,6 +505,79 @@ def list_captured_functions() -> dict:
     """List all captured function names with counts."""
     stats = get_storage().get_stats()
     return {"functions": stats.get("by_function", {})}
+
+
+# =============================================================================
+# Chronicle Middleware Endpoints (Full Request/Response Capture)
+# =============================================================================
+
+
+@app.get("/middleware/requests", tags=["Middleware"])
+def list_middleware_requests(
+    method: Optional[str] = Query(None, description="Filter by HTTP method"),
+    path_prefix: Optional[str] = Query(None, description="Filter by path prefix"),
+    status_code: Optional[int] = Query(None, description="Filter by status code"),
+    has_error: Optional[bool] = Query(None, description="Filter by error presence"),
+    limit: int = Query(50, ge=1, le=500),
+) -> dict:
+    """
+    List requests captured by Chronicle middleware.
+
+    This shows full HTTP request/response data with smart sampling.
+    """
+    if not CHRONICLE_MIDDLEWARE_AVAILABLE:
+        return {"error": "Chronicle middleware not available", "requests": []}
+
+    requests = get_captured_requests(
+        limit=limit,
+        method=method,
+        path_prefix=path_prefix,
+        status_code=status_code,
+        has_error=has_error,
+    )
+
+    return {
+        "requests": [r.to_dict() for r in requests],
+        "count": len(requests),
+        "middleware_enabled": True,
+    }
+
+
+@app.get("/middleware/stats", tags=["Middleware"])
+def get_middleware_stats() -> dict:
+    """
+    Get Chronicle middleware capture and sampling statistics.
+
+    Shows capture counts, sampling strategy effectiveness, and patterns tracked.
+    """
+    if not CHRONICLE_MIDDLEWARE_AVAILABLE:
+        return {"error": "Chronicle middleware not available"}
+
+    return get_capture_stats()
+
+
+@app.post("/middleware/clear", tags=["Middleware"])
+def clear_middleware_requests() -> dict:
+    """Clear all requests captured by Chronicle middleware."""
+    if not CHRONICLE_MIDDLEWARE_AVAILABLE:
+        return {"error": "Chronicle middleware not available", "deleted": 0}
+
+    count = clear_captured_requests()
+    return {"deleted": count}
+
+
+@app.get("/middleware/request/{request_id}", tags=["Middleware"])
+def get_middleware_request(request_id: str) -> dict:
+    """Get a specific captured request by ID."""
+    if not CHRONICLE_MIDDLEWARE_AVAILABLE:
+        return {"error": "Chronicle middleware not available"}
+
+    requests = get_captured_requests(limit=1000)
+    for req in requests:
+        if req.id == request_id:
+            return req.to_dict()
+
+    raise HTTPException(status_code=404, detail=f"Request not found: {request_id}")
 
 
 if __name__ == "__main__":

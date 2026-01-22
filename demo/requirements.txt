@@ -21,3 +21,7 @@ opentelemetry-instrumentation-sqlite3>=0.43b0
 
 # Data handling
 pandas>=2.0.0
+
+# PostgreSQL support
+psycopg2-binary>=2.9.0
+python-dotenv>=1.0.0
