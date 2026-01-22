@@ -1,0 +1,5078 @@
+{
+  "calls": [
+    {
+      "id": "02c63913-9c88-4fdc-8717-9ad70e485daf",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "93301ee7-0a44-4599-814d-52df2fa1bbf1",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": 93
+        }
+      },
+      "result": {
+        "id": "93301ee7-0a44-4599-814d-52df2fa1bbf1",
+        "title": "Send notification batch #7834",
+        "description": "Auto-generated task at 2026-01-21T05:00:14.455222",
+        "status": "processing",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 26
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:14.459968",
+        "updated_at": "2026-01-21T05:00:22.186130",
+        "claimed_at": "2026-01-21T05:00:22.176293",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:22.186098+00:00",
+      "end_time": "2026-01-21T05:00:22.286950+00:00",
+      "duration_ms": 100.82620899993344,
+      "dependencies": [],
+      "trace_id": "8ffe248dbeedc0ecc0a30df2a08e7a48",
+      "span_id": "ba400b2e8e814bbd"
+    },
+    {
+      "id": "b14fc6b2-84c7-47da-aea2-6c299391a6f2",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "93301ee7-0a44-4599-814d-52df2fa1bbf1",
+        "title": "Send notification batch #7834",
+        "description": "Auto-generated task at 2026-01-21T05:00:14.455222",
+        "status": "claimed",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 26
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:14.459968",
+        "updated_at": "2026-01-21T05:00:22.176293",
+        "claimed_at": "2026-01-21T05:00:22.176293",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:22.175304+00:00",
+      "end_time": "2026-01-21T05:00:22.178685+00:00",
+      "duration_ms": 3.356375000294065,
+      "dependencies": [],
+      "trace_id": "d7b158d6ec14f18a0d40e01f85da13bb",
+      "span_id": "572a688ad2c6546f"
+    },
+    {
+      "id": "978334a9-cf4e-4f42-b876-1b1185d03d10",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "69ee16dc-5295-4c71-ae5d-6b6400e5568a",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": 32
+        }
+      },
+      "result": {
+        "id": "69ee16dc-5295-4c71-ae5d-6b6400e5568a",
+        "title": "Update search index #3215",
+        "description": "Auto-generated task at 2026-01-21T05:00:12.555111",
+        "status": "processing",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 24
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:12.560120",
+        "updated_at": "2026-01-21T05:00:21.038619",
+        "claimed_at": "2026-01-21T05:00:21.026906",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:21.038567+00:00",
+      "end_time": "2026-01-21T05:00:21.078966+00:00",
+      "duration_ms": 40.367042000070796,
+      "dependencies": [],
+      "trace_id": "598ce2e64b4b3499f916d814cd2e39ff",
+      "span_id": "301e31dbdf8ea9ad"
+    },
+    {
+      "id": "f46b736f-8007-4a18-9de2-f8eedc3ad98e",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "69ee16dc-5295-4c71-ae5d-6b6400e5568a",
+        "title": "Update search index #3215",
+        "description": "Auto-generated task at 2026-01-21T05:00:12.555111",
+        "status": "claimed",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 24
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:12.560120",
+        "updated_at": "2026-01-21T05:00:21.026906",
+        "claimed_at": "2026-01-21T05:00:21.026906",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:21.026205+00:00",
+      "end_time": "2026-01-21T05:00:21.028884+00:00",
+      "duration_ms": 2.656249998835847,
+      "dependencies": [],
+      "trace_id": "6f80ac36f9ee893edefa922b81e4761c",
+      "span_id": "7945e7d0d63eb642"
+    },
+    {
+      "id": "82f6bb8d-7747-4b72-80d0-18ab94c2daa9",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0"
+      },
+      "result": {
+        "id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0",
+        "title": "Generate invoice #3914",
+        "description": "Auto-generated task at 2026-01-21T04:59:59.311381",
+        "status": "completed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 13
+        },
+        "result": {
+          "output": "Completed by simulator-worker-1",
+          "value": 40
+        },
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:59.317599",
+        "updated_at": "2026-01-21T05:00:00.251637",
+        "claimed_at": "2026-01-21T05:00:00.229418",
+        "completed_at": "2026-01-21T05:00:00.251637",
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:20.193413+00:00",
+      "end_time": "2026-01-21T05:00:20.194522+00:00",
+      "duration_ms": 1.076291999197565,
+      "dependencies": [],
+      "trace_id": "167ae7340507cd86d5cab9d61c58f843",
+      "span_id": "8b0c0a612bc5de41"
+    },
+    {
+      "id": "18d5e54c-d107-4f2b-b5b0-88512a5e9864",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "claimed",
+        "priority": null,
+        "limit": 18,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "2b303227-cce8-42fb-9413-d65d24d69aad",
+          "title": "Send notification batch #8522",
+          "description": "Auto-generated task at 2026-01-21T05:00:11.580070",
+          "status": "claimed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 4
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T05:00:11.584106",
+          "updated_at": "2026-01-21T05:00:13.552767",
+          "claimed_at": "2026-01-21T05:00:13.552767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "e960becf-4ca0-4454-b5b9-9a4880b6b01d",
+          "title": "Generate invoice #2707",
+          "description": "Auto-generated task at 2026-01-21T04:59:54.219830",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 91
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:54.226070",
+          "updated_at": "2026-01-21T05:00:01.218031",
+          "claimed_at": "2026-01-21T05:00:01.218031",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "022b84da-796d-4c71-a4c7-7bf627d5395b",
+          "title": "Process customer order #2072",
+          "description": "Updated at 2026-01-21T05:00:05.533793",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 71
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:41.741136",
+          "updated_at": "2026-01-21T05:00:05.542372",
+          "claimed_at": "2026-01-21T04:59:47.446266",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b82600c7-2c31-4ec4-9982-5c8864484f5f",
+          "title": "Validate data integrity #9057",
+          "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+          "status": "claimed",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 69
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:30.294483",
+          "updated_at": "2026-01-21T04:59:38.076516",
+          "claimed_at": "2026-01-21T04:59:38.076516",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+          "title": "Calculate user metrics #6141",
+          "description": "Updated at 2026-01-21T04:59:51.223699",
+          "status": "claimed",
+          "priority": "low",
+          "payload": {
+            "generated": true,
+            "value": 66
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:21.875170",
+          "updated_at": "2026-01-21T04:59:51.226852",
+          "claimed_at": "2026-01-21T04:59:23.977594",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:01.815723",
+          "updated_at": "2026-01-21T04:58:27.716690",
+          "claimed_at": "2026-01-21T04:58:27.716690",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:18.990557+00:00",
+      "end_time": "2026-01-21T05:00:18.992367+00:00",
+      "duration_ms": 1.7818340002122568,
+      "dependencies": [],
+      "trace_id": "d09027d6ba4ab85e11dbd22ec70e0ef9",
+      "span_id": "8f87133773e9c2a5"
+    },
+    {
+      "id": "8e81ddea-5a0b-49ef-bb3f-908fde04d32c",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "b10f62ef-099e-4891-94fa-e03fe0801867",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": 25
+        }
+      },
+      "result": {
+        "id": "b10f62ef-099e-4891-94fa-e03fe0801867",
+        "title": "Update search index #8314",
+        "description": "Auto-generated task at 2026-01-21T05:00:03.515075",
+        "status": "processing",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 86
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:03.521996",
+        "updated_at": "2026-01-21T05:00:17.871466",
+        "claimed_at": "2026-01-21T05:00:17.859976",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:17.871370+00:00",
+      "end_time": "2026-01-21T05:00:17.905057+00:00",
+      "duration_ms": 33.63970799910021,
+      "dependencies": [],
+      "trace_id": "93a7b3d14058558e3242446e0f876cd5",
+      "span_id": "309154b5e303a54d"
+    },
+    {
+      "id": "122a8410-1282-4ac1-b56f-ea0a24d8e001",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "b10f62ef-099e-4891-94fa-e03fe0801867",
+        "title": "Update search index #8314",
+        "description": "Auto-generated task at 2026-01-21T05:00:03.515075",
+        "status": "claimed",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 86
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:03.521996",
+        "updated_at": "2026-01-21T05:00:17.859976",
+        "claimed_at": "2026-01-21T05:00:17.859976",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:17.859116+00:00",
+      "end_time": "2026-01-21T05:00:17.861978+00:00",
+      "duration_ms": 2.8356250004435424,
+      "dependencies": [],
+      "trace_id": "355e3cfbf2fab4619c624ca8f30d4871",
+      "span_id": "298a09d05544d818"
+    },
+    {
+      "id": "3f266ff3-0f67-4a61-936b-0da8f128edff",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "processing",
+        "priority": null,
+        "limit": 43,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+          "title": "Update search index #6144",
+          "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 62
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:38.926401",
+          "updated_at": "2026-01-21T04:59:43.986536",
+          "claimed_at": "2026-01-21T04:59:43.976661",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+          "title": "Generate monthly report #3251",
+          "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 40
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:36.242581",
+          "updated_at": "2026-01-21T04:59:46.336053",
+          "claimed_at": "2026-01-21T04:59:46.325400",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+          "title": "Archive old records #1470",
+          "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 34
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:35.193972",
+          "updated_at": "2026-01-21T04:59:39.852751",
+          "claimed_at": "2026-01-21T04:59:39.841933",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:26.908768",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:16.759910+00:00",
+      "end_time": "2026-01-21T05:00:16.761226+00:00",
+      "duration_ms": 1.2865000007877825,
+      "dependencies": [],
+      "trace_id": "989c36bc6361d5662fe799f18e19c60e",
+      "span_id": "2a8164648ead1879"
+    },
+    {
+      "id": "47c2acf6-03fb-4e46-a45f-022437f7b9d8",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "completed",
+        "priority": null,
+        "limit": 22,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0",
+          "title": "Generate invoice #3914",
+          "description": "Auto-generated task at 2026-01-21T04:59:59.311381",
+          "status": "completed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 13
+          },
+          "result": {
+            "output": "Completed by simulator-worker-1",
+            "value": 40
+          },
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:59.317599",
+          "updated_at": "2026-01-21T05:00:00.251637",
+          "claimed_at": "2026-01-21T05:00:00.229418",
+          "completed_at": "2026-01-21T05:00:00.251637",
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "8f1f84a8-4888-4549-9e76-e64d58915ed7",
+          "title": "Send notification batch #8772",
+          "description": "Auto-generated task at 2026-01-21T04:59:55.339201",
+          "status": "completed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 100
+          },
+          "result": {
+            "output": "Completed by simulator-worker-1",
+            "value": 70
+          },
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:55.343630",
+          "updated_at": "2026-01-21T04:59:57.425050",
+          "claimed_at": "2026-01-21T04:59:57.360072",
+          "completed_at": "2026-01-21T04:59:57.425050",
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+          "title": "Validate data integrity #2329",
+          "description": "Auto-generated task at 2026-01-21T04:59:29.082525",
+          "status": "completed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 76
+          },
+          "result": {
+            "output": "Completed by simulator-worker-1",
+            "value": 99
+          },
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:29.088358",
+          "updated_at": "2026-01-21T04:59:32.493582",
+          "claimed_at": "2026-01-21T04:59:32.473376",
+          "completed_at": "2026-01-21T04:59:32.493582",
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:15.571514+00:00",
+      "end_time": "2026-01-21T05:00:15.573272+00:00",
+      "duration_ms": 1.698207999652368,
+      "dependencies": [],
+      "trace_id": "9b2282e0490bf30eb65d847fbafe2110",
+      "span_id": "7a20c1743e217ab8"
+    },
+    {
+      "id": "b0499443-4891-402d-bf65-a4af1b8a4937",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Send notification batch #7834",
+          "description": "Auto-generated task at 2026-01-21T05:00:14.455222",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 26
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "93301ee7-0a44-4599-814d-52df2fa1bbf1",
+        "title": "Send notification batch #7834",
+        "description": "Auto-generated task at 2026-01-21T05:00:14.455222",
+        "status": "pending",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 26
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:14.459968",
+        "updated_at": "2026-01-21T05:00:14.459968",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:14.459897+00:00",
+      "end_time": "2026-01-21T05:00:14.462482+00:00",
+      "duration_ms": 2.5577090000297176,
+      "dependencies": [],
+      "trace_id": "dd1584fedbe76fa4a3f9c087e3b5a337",
+      "span_id": "0158ade48e67307f"
+    },
+    {
+      "id": "b2617b6b-6d49-4b9c-90e1-5d8680dabadb",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "2b303227-cce8-42fb-9413-d65d24d69aad",
+        "title": "Send notification batch #8522",
+        "description": "Auto-generated task at 2026-01-21T05:00:11.580070",
+        "status": "claimed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 4
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:11.584106",
+        "updated_at": "2026-01-21T05:00:13.552767",
+        "claimed_at": "2026-01-21T05:00:13.552767",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:13.551568+00:00",
+      "end_time": "2026-01-21T05:00:13.557099+00:00",
+      "duration_ms": 5.492875001436914,
+      "dependencies": [],
+      "trace_id": "8012cf50178446c2576a7d8be9444b72",
+      "span_id": "ba3b357e000c5334"
+    },
+    {
+      "id": "e85fa228-0f32-4d74-834f-e2352244a031",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Update search index #3215",
+          "description": "Auto-generated task at 2026-01-21T05:00:12.555111",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 24
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "69ee16dc-5295-4c71-ae5d-6b6400e5568a",
+        "title": "Update search index #3215",
+        "description": "Auto-generated task at 2026-01-21T05:00:12.555111",
+        "status": "pending",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 24
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:12.560120",
+        "updated_at": "2026-01-21T05:00:12.560120",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:12.560072+00:00",
+      "end_time": "2026-01-21T05:00:12.562276+00:00",
+      "duration_ms": 2.183750000767759,
+      "dependencies": [],
+      "trace_id": "81e92e82b6dc14b80bee437a381d2806",
+      "span_id": "9301013166dc4fee"
+    },
+    {
+      "id": "98cf5741-78f3-4259-aaef-0fad21ee0adf",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Send notification batch #8522",
+          "description": "Auto-generated task at 2026-01-21T05:00:11.580070",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 4
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "2b303227-cce8-42fb-9413-d65d24d69aad",
+        "title": "Send notification batch #8522",
+        "description": "Auto-generated task at 2026-01-21T05:00:11.580070",
+        "status": "pending",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 4
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:11.584106",
+        "updated_at": "2026-01-21T05:00:11.584106",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:11.584055+00:00",
+      "end_time": "2026-01-21T05:00:11.586315+00:00",
+      "duration_ms": 2.239292000012938,
+      "dependencies": [],
+      "trace_id": "ffb35997edad6f8294f179fabd5854a5",
+      "span_id": "cd072d9bd6f333f3"
+    },
+    {
+      "id": "4ccb7e6c-8fd8-4368-9e2f-b98f94238823",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "ab751186-0128-4a61-8168-a1a6e816bd85"
+      },
+      "result": {
+        "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+        "title": "Generate invoice #2096",
+        "description": "Updated at 2026-01-21T04:58:31.194368",
+        "status": "processing",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 52
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:20.340202",
+        "updated_at": "2026-01-21T04:58:31.202957",
+        "claimed_at": "2026-01-21T04:58:21.444710",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:10.580753+00:00",
+      "end_time": "2026-01-21T05:00:10.582054+00:00",
+      "duration_ms": 1.2769999993906822,
+      "dependencies": [],
+      "trace_id": "f1c9e89ba41b9bc1d669a0bd38cbaea0",
+      "span_id": "8e3059bd075fb71c"
+    },
+    {
+      "id": "d2c84756-f48f-4cac-80bc-d0a6ccaf7eb0",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "72f59ff7-f783-4943-b9e0-8118601f1024"
+      },
+      "result": {
+        "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+        "title": "Validate data integrity #5140",
+        "description": "Updated at 2026-01-21T04:59:26.901848",
+        "status": "processing",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 30
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:35.769141",
+        "updated_at": "2026-01-21T04:59:26.908768",
+        "claimed_at": "2026-01-21T04:59:16.671767",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:09.719022+00:00",
+      "end_time": "2026-01-21T05:00:09.720539+00:00",
+      "duration_ms": 1.4850829993520165,
+      "dependencies": [],
+      "trace_id": "68a587125c03108572efdcd30ae1f0f1",
+      "span_id": "b5c94783a778b5c4"
+    },
+    {
+      "id": "17650cad-60a5-4968-86bc-dfbeee322128",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "claimed",
+        "priority": null,
+        "limit": 15,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "e960becf-4ca0-4454-b5b9-9a4880b6b01d",
+          "title": "Generate invoice #2707",
+          "description": "Auto-generated task at 2026-01-21T04:59:54.219830",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 91
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:54.226070",
+          "updated_at": "2026-01-21T05:00:01.218031",
+          "claimed_at": "2026-01-21T05:00:01.218031",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "022b84da-796d-4c71-a4c7-7bf627d5395b",
+          "title": "Process customer order #2072",
+          "description": "Updated at 2026-01-21T05:00:05.533793",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 71
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:41.741136",
+          "updated_at": "2026-01-21T05:00:05.542372",
+          "claimed_at": "2026-01-21T04:59:47.446266",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b82600c7-2c31-4ec4-9982-5c8864484f5f",
+          "title": "Validate data integrity #9057",
+          "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+          "status": "claimed",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 69
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:30.294483",
+          "updated_at": "2026-01-21T04:59:38.076516",
+          "claimed_at": "2026-01-21T04:59:38.076516",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+          "title": "Calculate user metrics #6141",
+          "description": "Updated at 2026-01-21T04:59:51.223699",
+          "status": "claimed",
+          "priority": "low",
+          "payload": {
+            "generated": true,
+            "value": 66
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:21.875170",
+          "updated_at": "2026-01-21T04:59:51.226852",
+          "claimed_at": "2026-01-21T04:59:23.977594",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:01.815723",
+          "updated_at": "2026-01-21T04:58:27.716690",
+          "claimed_at": "2026-01-21T04:58:27.716690",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:08.860657+00:00",
+      "end_time": "2026-01-21T05:00:08.862280+00:00",
+      "duration_ms": 1.593124999999418,
+      "dependencies": [],
+      "trace_id": "5555c7aa4d3865cb9c93753b9cb24b7e",
+      "span_id": "b3cf007704babbdf"
+    },
+    {
+      "id": "27588a58-ee5b-4835-a0fd-f56588f6b4a3",
+      "function_name": "delete_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "bb5c57e9-0015-4b40-817c-6ef0f9bc8585"
+      },
+      "result": {
+        "deleted": "bb5c57e9-0015-4b40-817c-6ef0f9bc8585"
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:07.683506+00:00",
+      "end_time": "2026-01-21T05:00:07.687696+00:00",
+      "duration_ms": 4.156375000093249,
+      "dependencies": [],
+      "trace_id": "cd9e8992e3bf41283bf7f47f937d0786",
+      "span_id": "e7bd0674476dd2a0"
+    },
+    {
+      "id": "fa7a9530-5f06-4f0f-af77-53fc97055cc0",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "processing",
+        "priority": null,
+        "limit": 22,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+          "title": "Update search index #6144",
+          "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 62
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:38.926401",
+          "updated_at": "2026-01-21T04:59:43.986536",
+          "claimed_at": "2026-01-21T04:59:43.976661",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+          "title": "Generate monthly report #3251",
+          "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 40
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:36.242581",
+          "updated_at": "2026-01-21T04:59:46.336053",
+          "claimed_at": "2026-01-21T04:59:46.325400",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+          "title": "Archive old records #1470",
+          "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 34
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:35.193972",
+          "updated_at": "2026-01-21T04:59:39.852751",
+          "claimed_at": "2026-01-21T04:59:39.841933",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:26.908768",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:06.702032+00:00",
+      "end_time": "2026-01-21T05:00:06.704461+00:00",
+      "duration_ms": 2.3929170001792954,
+      "dependencies": [],
+      "trace_id": "66140750859ab2995437f2b0df72361c",
+      "span_id": "378104ff93efdec5"
+    },
+    {
+      "id": "64595b21-558b-4890-8e81-a3ebb1c37dce",
+      "function_name": "update_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "022b84da-796d-4c71-a4c7-7bf627d5395b",
+        "request": {
+          "title": null,
+          "description": "Updated at 2026-01-21T05:00:05.533793",
+          "priority": "medium",
+          "payload": null
+        }
+      },
+      "result": {
+        "id": "022b84da-796d-4c71-a4c7-7bf627d5395b",
+        "title": "Process customer order #2072",
+        "description": "Updated at 2026-01-21T05:00:05.533793",
+        "status": "claimed",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 71
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:41.741136",
+        "updated_at": "2026-01-21T05:00:05.542372",
+        "claimed_at": "2026-01-21T04:59:47.446266",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:05.540964+00:00",
+      "end_time": "2026-01-21T05:00:05.544586+00:00",
+      "duration_ms": 3.5939589997724397,
+      "dependencies": [],
+      "trace_id": "1655a8a60fc1a0b25e22e7557d7a1414",
+      "span_id": "44b0e22cd6579e6c"
+    },
+    {
+      "id": "d0fc3567-3b53-4675-994d-d1c8f9338918",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Sync inventory data #8582",
+          "description": "Auto-generated task at 2026-01-21T05:00:04.538347",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 32
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "bb5c57e9-0015-4b40-817c-6ef0f9bc8585",
+        "title": "Sync inventory data #8582",
+        "description": "Auto-generated task at 2026-01-21T05:00:04.538347",
+        "status": "pending",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 32
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:04.543745",
+        "updated_at": "2026-01-21T05:00:04.543745",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:04.543676+00:00",
+      "end_time": "2026-01-21T05:00:04.547392+00:00",
+      "duration_ms": 3.6863749992335215,
+      "dependencies": [],
+      "trace_id": "a2e7744ecfd9ce0a64136ef7523ade17",
+      "span_id": "89a12732c4815a02"
+    },
+    {
+      "id": "031498af-1afa-443b-a4f2-53bde6ebd95d",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Update search index #8314",
+          "description": "Auto-generated task at 2026-01-21T05:00:03.515075",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 86
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "b10f62ef-099e-4891-94fa-e03fe0801867",
+        "title": "Update search index #8314",
+        "description": "Auto-generated task at 2026-01-21T05:00:03.515075",
+        "status": "pending",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 86
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T05:00:03.521996",
+        "updated_at": "2026-01-21T05:00:03.521996",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:03.521921+00:00",
+      "end_time": "2026-01-21T05:00:03.525474+00:00",
+      "duration_ms": 3.516208000291954,
+      "dependencies": [],
+      "trace_id": "8bef6574879ca8eebda64bb0ee6eed66",
+      "span_id": "2c1f9dbc86f17be3"
+    },
+    {
+      "id": "fdac82d2-6e79-4d0d-bd87-f0e94fcbac01",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": null,
+        "priority": null,
+        "limit": 29,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0",
+          "title": "Generate invoice #3914",
+          "description": "Auto-generated task at 2026-01-21T04:59:59.311381",
+          "status": "completed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 13
+          },
+          "result": {
+            "output": "Completed by simulator-worker-1",
+            "value": 40
+          },
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:59.317599",
+          "updated_at": "2026-01-21T05:00:00.251637",
+          "claimed_at": "2026-01-21T05:00:00.229418",
+          "completed_at": "2026-01-21T05:00:00.251637",
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "8f1f84a8-4888-4549-9e76-e64d58915ed7",
+          "title": "Send notification batch #8772",
+          "description": "Auto-generated task at 2026-01-21T04:59:55.339201",
+          "status": "completed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 100
+          },
+          "result": {
+            "output": "Completed by simulator-worker-1",
+            "value": 70
+          },
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:55.343630",
+          "updated_at": "2026-01-21T04:59:57.425050",
+          "claimed_at": "2026-01-21T04:59:57.360072",
+          "completed_at": "2026-01-21T04:59:57.425050",
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "e960becf-4ca0-4454-b5b9-9a4880b6b01d",
+          "title": "Generate invoice #2707",
+          "description": "Auto-generated task at 2026-01-21T04:59:54.219830",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 91
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:54.226070",
+          "updated_at": "2026-01-21T05:00:01.218031",
+          "claimed_at": "2026-01-21T05:00:01.218031",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "022b84da-796d-4c71-a4c7-7bf627d5395b",
+          "title": "Process customer order #2072",
+          "description": "Auto-generated task at 2026-01-21T04:59:41.734587",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 71
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:41.741136",
+          "updated_at": "2026-01-21T04:59:47.446266",
+          "claimed_at": "2026-01-21T04:59:47.446266",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+          "title": "Update search index #6144",
+          "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 62
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:38.926401",
+          "updated_at": "2026-01-21T04:59:43.986536",
+          "claimed_at": "2026-01-21T04:59:43.976661",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+          "title": "Generate monthly report #3251",
+          "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 40
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:36.242581",
+          "updated_at": "2026-01-21T04:59:46.336053",
+          "claimed_at": "2026-01-21T04:59:46.325400",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+          "title": "Archive old records #1470",
+          "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 34
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:35.193972",
+          "updated_at": "2026-01-21T04:59:39.852751",
+          "claimed_at": "2026-01-21T04:59:39.841933",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b82600c7-2c31-4ec4-9982-5c8864484f5f",
+          "title": "Validate data integrity #9057",
+          "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+          "status": "claimed",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 69
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:30.294483",
+          "updated_at": "2026-01-21T04:59:38.076516",
+          "claimed_at": "2026-01-21T04:59:38.076516",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+          "title": "Validate data integrity #2329",
+          "description": "Auto-generated task at 2026-01-21T04:59:29.082525",
+          "status": "completed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 76
+          },
+          "result": {
+            "output": "Completed by simulator-worker-1",
+            "value": 99
+          },
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:29.088358",
+          "updated_at": "2026-01-21T04:59:32.493582",
+          "claimed_at": "2026-01-21T04:59:32.473376",
+          "completed_at": "2026-01-21T04:59:32.493582",
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+          "title": "Calculate user metrics #6141",
+          "description": "Updated at 2026-01-21T04:59:51.223699",
+          "status": "claimed",
+          "priority": "low",
+          "payload": {
+            "generated": true,
+            "value": 66
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:21.875170",
+          "updated_at": "2026-01-21T04:59:51.226852",
+          "claimed_at": "2026-01-21T04:59:23.977594",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:26.908768",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:01.815723",
+          "updated_at": "2026-01-21T04:58:27.716690",
+          "claimed_at": "2026-01-21T04:58:27.716690",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:02.328758+00:00",
+      "end_time": "2026-01-21T05:00:02.330281+00:00",
+      "duration_ms": 1.4927920001355233,
+      "dependencies": [],
+      "trace_id": "8e149fdcb4ac0c4abfb82a22d133cee4",
+      "span_id": "ff2ad2faa4466f1c"
+    },
+    {
+      "id": "7c730068-ee6d-41a9-a1f8-3b8d56995045",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "e960becf-4ca0-4454-b5b9-9a4880b6b01d",
+        "title": "Generate invoice #2707",
+        "description": "Auto-generated task at 2026-01-21T04:59:54.219830",
+        "status": "claimed",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 91
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:54.226070",
+        "updated_at": "2026-01-21T05:00:01.218031",
+        "claimed_at": "2026-01-21T05:00:01.218031",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:01.216819+00:00",
+      "end_time": "2026-01-21T05:00:01.222499+00:00",
+      "duration_ms": 5.646541998430621,
+      "dependencies": [],
+      "trace_id": "a966e7d15d5676d2254ecebe5371e03d",
+      "span_id": "a69445f345add883"
+    },
+    {
+      "id": "ab2f86ba-7f54-438a-bcea-4a1d31d1c842",
+      "function_name": "complete_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0",
+        "result": {
+          "output": "Completed by simulator-worker-1",
+          "value": 40
+        }
+      },
+      "result": {
+        "id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0",
+        "title": "Generate invoice #3914",
+        "description": "Auto-generated task at 2026-01-21T04:59:59.311381",
+        "status": "completed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 13
+        },
+        "result": {
+          "output": "Completed by simulator-worker-1",
+          "value": 40
+        },
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:59.317599",
+        "updated_at": "2026-01-21T05:00:00.251637",
+        "claimed_at": "2026-01-21T05:00:00.229418",
+        "completed_at": "2026-01-21T05:00:00.251637",
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:00.251605+00:00",
+      "end_time": "2026-01-21T05:00:00.253705+00:00",
+      "duration_ms": 2.083874998788815,
+      "dependencies": [],
+      "trace_id": "7d245969889f3eef58658bde3799dd47",
+      "span_id": "98df4e2eb0bbf0da"
+    },
+    {
+      "id": "dae475d6-ea1b-4080-8694-3861c66ed186",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": null
+        }
+      },
+      "result": {
+        "id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0",
+        "title": "Generate invoice #3914",
+        "description": "Auto-generated task at 2026-01-21T04:59:59.311381",
+        "status": "processing",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 13
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:59.317599",
+        "updated_at": "2026-01-21T05:00:00.242430",
+        "claimed_at": "2026-01-21T05:00:00.229418",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:00.242398+00:00",
+      "end_time": "2026-01-21T05:00:00.244562+00:00",
+      "duration_ms": 2.145083000868908,
+      "dependencies": [],
+      "trace_id": "3dd4b0479a979f1720e902b9fc0abe2c",
+      "span_id": "fe347366f9f8d037"
+    },
+    {
+      "id": "f6316e41-bbec-4e0c-8e31-97f5712755fc",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0",
+        "title": "Generate invoice #3914",
+        "description": "Auto-generated task at 2026-01-21T04:59:59.311381",
+        "status": "claimed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 13
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:59.317599",
+        "updated_at": "2026-01-21T05:00:00.229418",
+        "claimed_at": "2026-01-21T05:00:00.229418",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T05:00:00.228179+00:00",
+      "end_time": "2026-01-21T05:00:00.232594+00:00",
+      "duration_ms": 4.381332999400911,
+      "dependencies": [],
+      "trace_id": "ba3399480d2661fe72202205acb0487c",
+      "span_id": "6dd3aabe8a5b86f5"
+    },
+    {
+      "id": "d958cae5-1926-42e3-86a6-b677eac1f965",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Generate invoice #3914",
+          "description": "Auto-generated task at 2026-01-21T04:59:59.311381",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 13
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "f74396f5-911b-4a4e-b1d1-d07744f27bf0",
+        "title": "Generate invoice #3914",
+        "description": "Auto-generated task at 2026-01-21T04:59:59.311381",
+        "status": "pending",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 13
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:59.317599",
+        "updated_at": "2026-01-21T04:59:59.317599",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:59.317510+00:00",
+      "end_time": "2026-01-21T04:59:59.320487+00:00",
+      "duration_ms": 2.941666998594883,
+      "dependencies": [],
+      "trace_id": "c7ab2ab1dc78f21bc98cf3b76aecc8d3",
+      "span_id": "a694ec8aec701951"
+    },
+    {
+      "id": "2e803355-f308-44de-9e9b-23673890435b",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "claimed",
+        "priority": null,
+        "limit": 40,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "022b84da-796d-4c71-a4c7-7bf627d5395b",
+          "title": "Process customer order #2072",
+          "description": "Auto-generated task at 2026-01-21T04:59:41.734587",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 71
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:41.741136",
+          "updated_at": "2026-01-21T04:59:47.446266",
+          "claimed_at": "2026-01-21T04:59:47.446266",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b82600c7-2c31-4ec4-9982-5c8864484f5f",
+          "title": "Validate data integrity #9057",
+          "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+          "status": "claimed",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 69
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:30.294483",
+          "updated_at": "2026-01-21T04:59:38.076516",
+          "claimed_at": "2026-01-21T04:59:38.076516",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+          "title": "Calculate user metrics #6141",
+          "description": "Updated at 2026-01-21T04:59:51.223699",
+          "status": "claimed",
+          "priority": "low",
+          "payload": {
+            "generated": true,
+            "value": 66
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:21.875170",
+          "updated_at": "2026-01-21T04:59:51.226852",
+          "claimed_at": "2026-01-21T04:59:23.977594",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:01.815723",
+          "updated_at": "2026-01-21T04:58:27.716690",
+          "claimed_at": "2026-01-21T04:58:27.716690",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:58.350602+00:00",
+      "end_time": "2026-01-21T04:59:58.352208+00:00",
+      "duration_ms": 1.5712500007794006,
+      "dependencies": [],
+      "trace_id": "5dd934b3a6d1c6207fe399248a46e4df",
+      "span_id": "88266736ed7d210d"
+    },
+    {
+      "id": "2236c86e-fe29-4358-b3ff-18da4d23dcd9",
+      "function_name": "complete_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "8f1f84a8-4888-4549-9e76-e64d58915ed7",
+        "result": {
+          "output": "Completed by simulator-worker-1",
+          "value": 70
+        }
+      },
+      "result": {
+        "id": "8f1f84a8-4888-4549-9e76-e64d58915ed7",
+        "title": "Send notification batch #8772",
+        "description": "Auto-generated task at 2026-01-21T04:59:55.339201",
+        "status": "completed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 100
+        },
+        "result": {
+          "output": "Completed by simulator-worker-1",
+          "value": 70
+        },
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:55.343630",
+        "updated_at": "2026-01-21T04:59:57.425050",
+        "claimed_at": "2026-01-21T04:59:57.360072",
+        "completed_at": "2026-01-21T04:59:57.425050",
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:57.425029+00:00",
+      "end_time": "2026-01-21T04:59:57.426357+00:00",
+      "duration_ms": 1.3181659996917006,
+      "dependencies": [],
+      "trace_id": "710bcb5a86af6e44eed49cb0f34d818b",
+      "span_id": "7274c36b02ad2331"
+    },
+    {
+      "id": "0a5dd378-b027-4d6c-85be-39c64d1691c7",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "8f1f84a8-4888-4549-9e76-e64d58915ed7",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": null
+        }
+      },
+      "result": {
+        "id": "8f1f84a8-4888-4549-9e76-e64d58915ed7",
+        "title": "Send notification batch #8772",
+        "description": "Auto-generated task at 2026-01-21T04:59:55.339201",
+        "status": "processing",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 100
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:55.343630",
+        "updated_at": "2026-01-21T04:59:57.372042",
+        "claimed_at": "2026-01-21T04:59:57.360072",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:57.371992+00:00",
+      "end_time": "2026-01-21T04:59:57.376218+00:00",
+      "duration_ms": 4.197707999992417,
+      "dependencies": [],
+      "trace_id": "2d76f0f3a44522a3454b163a680620ac",
+      "span_id": "96b601d27c76142b"
+    },
+    {
+      "id": "60644303-d096-4e16-a216-255ca9ab54dd",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "8f1f84a8-4888-4549-9e76-e64d58915ed7",
+        "title": "Send notification batch #8772",
+        "description": "Auto-generated task at 2026-01-21T04:59:55.339201",
+        "status": "claimed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 100
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:55.343630",
+        "updated_at": "2026-01-21T04:59:57.360072",
+        "claimed_at": "2026-01-21T04:59:57.360072",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:57.359299+00:00",
+      "end_time": "2026-01-21T04:59:57.362471+00:00",
+      "duration_ms": 3.1523750003543682,
+      "dependencies": [],
+      "trace_id": "69aad1a2cdd1390d5248c43564b58672",
+      "span_id": "8e84b743cfdcb909"
+    },
+    {
+      "id": "9ea98196-3aa2-44b0-9c89-f09af0730975",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "processing",
+        "priority": null,
+        "limit": 45,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+          "title": "Update search index #6144",
+          "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 62
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:38.926401",
+          "updated_at": "2026-01-21T04:59:43.986536",
+          "claimed_at": "2026-01-21T04:59:43.976661",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+          "title": "Generate monthly report #3251",
+          "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 40
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:36.242581",
+          "updated_at": "2026-01-21T04:59:46.336053",
+          "claimed_at": "2026-01-21T04:59:46.325400",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+          "title": "Archive old records #1470",
+          "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 34
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:35.193972",
+          "updated_at": "2026-01-21T04:59:39.852751",
+          "claimed_at": "2026-01-21T04:59:39.841933",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:26.908768",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:56.474566+00:00",
+      "end_time": "2026-01-21T04:59:56.476125+00:00",
+      "duration_ms": 1.5300420000130543,
+      "dependencies": [],
+      "trace_id": "c0bd3a2fb2f2dd3e2c80913b9053f795",
+      "span_id": "528856770d42babc"
+    },
+    {
+      "id": "90a8fbb3-c52e-490d-90a8-ed3eb7d61743",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Send notification batch #8772",
+          "description": "Auto-generated task at 2026-01-21T04:59:55.339201",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 100
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "8f1f84a8-4888-4549-9e76-e64d58915ed7",
+        "title": "Send notification batch #8772",
+        "description": "Auto-generated task at 2026-01-21T04:59:55.339201",
+        "status": "pending",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 100
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:55.343630",
+        "updated_at": "2026-01-21T04:59:55.343630",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:55.343593+00:00",
+      "end_time": "2026-01-21T04:59:55.345240+00:00",
+      "duration_ms": 1.6335420004907064,
+      "dependencies": [],
+      "trace_id": "1eb6fab066913d47cfafd7df04a62c69",
+      "span_id": "c6bbefa5e3f1e8a3"
+    },
+    {
+      "id": "29a06950-60d7-458a-878e-ea93a5c8bc09",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Generate invoice #2707",
+          "description": "Auto-generated task at 2026-01-21T04:59:54.219830",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 91
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "e960becf-4ca0-4454-b5b9-9a4880b6b01d",
+        "title": "Generate invoice #2707",
+        "description": "Auto-generated task at 2026-01-21T04:59:54.219830",
+        "status": "pending",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 91
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:54.226070",
+        "updated_at": "2026-01-21T04:59:54.226070",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:54.226009+00:00",
+      "end_time": "2026-01-21T04:59:54.228446+00:00",
+      "duration_ms": 2.407375000984757,
+      "dependencies": [],
+      "trace_id": "8e274e76357c9e1a3df00c4eea7195e1",
+      "span_id": "c201dfb8d0365195"
+    },
+    {
+      "id": "95ccc39e-7d31-404e-bd7d-5557ff84ce70",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": null,
+      "exception": "404: No tasks available",
+      "exception_type": "HTTPException",
+      "start_time": "2026-01-21T04:59:53.242852+00:00",
+      "end_time": "2026-01-21T04:59:53.243288+00:00",
+      "duration_ms": 0.42795800072781276,
+      "dependencies": [],
+      "trace_id": "81cdd338baed14db2f89b868f6388f50",
+      "span_id": "0b83fb9d5c5dd3ad"
+    },
+    {
+      "id": "817dea29-6adf-4d8e-9f30-4f68e5c494ee",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "processing",
+        "priority": null,
+        "limit": 47,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+          "title": "Update search index #6144",
+          "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 62
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:38.926401",
+          "updated_at": "2026-01-21T04:59:43.986536",
+          "claimed_at": "2026-01-21T04:59:43.976661",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+          "title": "Generate monthly report #3251",
+          "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 40
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:36.242581",
+          "updated_at": "2026-01-21T04:59:46.336053",
+          "claimed_at": "2026-01-21T04:59:46.325400",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+          "title": "Archive old records #1470",
+          "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 34
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:35.193972",
+          "updated_at": "2026-01-21T04:59:39.852751",
+          "claimed_at": "2026-01-21T04:59:39.841933",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:26.908768",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:52.364331+00:00",
+      "end_time": "2026-01-21T04:59:52.365550+00:00",
+      "duration_ms": 1.192125000670785,
+      "dependencies": [],
+      "trace_id": "40c6175c3e9fe2ac8d4e8708fb971d8f",
+      "span_id": "27a9c3d29e8b3276"
+    },
+    {
+      "id": "0b99f912-906c-4cc7-b766-cc179b259027",
+      "function_name": "update_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+        "request": {
+          "title": null,
+          "description": "Updated at 2026-01-21T04:59:51.223699",
+          "priority": "low",
+          "payload": null
+        }
+      },
+      "result": {
+        "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+        "title": "Calculate user metrics #6141",
+        "description": "Updated at 2026-01-21T04:59:51.223699",
+        "status": "claimed",
+        "priority": "low",
+        "payload": {
+          "generated": true,
+          "value": 66
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:21.875170",
+        "updated_at": "2026-01-21T04:59:51.226852",
+        "claimed_at": "2026-01-21T04:59:23.977594",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:51.226364+00:00",
+      "end_time": "2026-01-21T04:59:51.228098+00:00",
+      "duration_ms": 1.7234999995707767,
+      "dependencies": [],
+      "trace_id": "8e730fe382a09172807cef565d253bdb",
+      "span_id": "9a5b45564bee75fb"
+    },
+    {
+      "id": "b770d8e2-a064-4f56-96cb-91933352f6d4",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "b82600c7-2c31-4ec4-9982-5c8864484f5f"
+      },
+      "result": {
+        "id": "b82600c7-2c31-4ec4-9982-5c8864484f5f",
+        "title": "Validate data integrity #9057",
+        "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+        "status": "claimed",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 69
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:30.294483",
+        "updated_at": "2026-01-21T04:59:38.076516",
+        "claimed_at": "2026-01-21T04:59:38.076516",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:50.411436+00:00",
+      "end_time": "2026-01-21T04:59:50.412826+00:00",
+      "duration_ms": 1.359500000035041,
+      "dependencies": [],
+      "trace_id": "3c1488b853bd3ee2a46a5a3471e91d07",
+      "span_id": "4a83bdc47cf8b964"
+    },
+    {
+      "id": "fbc4eee9-595d-4bf7-ae4e-6601914851f4",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "processing",
+        "priority": null,
+        "limit": 18,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+          "title": "Update search index #6144",
+          "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 62
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:38.926401",
+          "updated_at": "2026-01-21T04:59:43.986536",
+          "claimed_at": "2026-01-21T04:59:43.976661",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+          "title": "Generate monthly report #3251",
+          "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 40
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:36.242581",
+          "updated_at": "2026-01-21T04:59:46.336053",
+          "claimed_at": "2026-01-21T04:59:46.325400",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+          "title": "Archive old records #1470",
+          "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 34
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:35.193972",
+          "updated_at": "2026-01-21T04:59:39.852751",
+          "claimed_at": "2026-01-21T04:59:39.841933",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:26.908768",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:49.475542+00:00",
+      "end_time": "2026-01-21T04:59:49.476645+00:00",
+      "duration_ms": 1.0720840000431053,
+      "dependencies": [],
+      "trace_id": "4ec3cef0bcc1d4735987c296ed169202",
+      "span_id": "ba52b39559b2f84c"
+    },
+    {
+      "id": "b4e7085a-22df-45cd-9338-6a6bcd0e7a75",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": null,
+      "exception": "404: No tasks available",
+      "exception_type": "HTTPException",
+      "start_time": "2026-01-21T04:59:48.367919+00:00",
+      "end_time": "2026-01-21T04:59:48.368789+00:00",
+      "duration_ms": 0.849457999720471,
+      "dependencies": [],
+      "trace_id": "485e34f34b69bcbb176cb3a8c4f81abd",
+      "span_id": "fa869b99d77c209b"
+    },
+    {
+      "id": "120b20c1-0b62-4ea7-9dfd-cb72cc4d67c8",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "022b84da-796d-4c71-a4c7-7bf627d5395b",
+        "title": "Process customer order #2072",
+        "description": "Auto-generated task at 2026-01-21T04:59:41.734587",
+        "status": "claimed",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 71
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:41.741136",
+        "updated_at": "2026-01-21T04:59:47.446266",
+        "claimed_at": "2026-01-21T04:59:47.446266",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:47.445563+00:00",
+      "end_time": "2026-01-21T04:59:47.449541+00:00",
+      "duration_ms": 3.9510420010628877,
+      "dependencies": [],
+      "trace_id": "46011103191fabffc4c13d640c28598a",
+      "span_id": "12d8fecdafcd853e"
+    },
+    {
+      "id": "68815b85-b2e0-4aeb-89bb-29c9849c5c79",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": 99
+        }
+      },
+      "result": {
+        "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+        "title": "Generate monthly report #3251",
+        "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+        "status": "processing",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 40
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:36.242581",
+        "updated_at": "2026-01-21T04:59:46.336053",
+        "claimed_at": "2026-01-21T04:59:46.325400",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:46.336012+00:00",
+      "end_time": "2026-01-21T04:59:46.444338+00:00",
+      "duration_ms": 108.2982499992795,
+      "dependencies": [],
+      "trace_id": "93293d53af3caf597d165386db48ed6f",
+      "span_id": "9d72cf0e48910172"
+    },
+    {
+      "id": "6817a2a9-cf66-4039-9f75-17fe08406ec8",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+        "title": "Generate monthly report #3251",
+        "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+        "status": "claimed",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 40
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:36.242581",
+        "updated_at": "2026-01-21T04:59:46.325400",
+        "claimed_at": "2026-01-21T04:59:46.325400",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:46.324544+00:00",
+      "end_time": "2026-01-21T04:59:46.327856+00:00",
+      "duration_ms": 3.282542000306421,
+      "dependencies": [],
+      "trace_id": "36f15ab1669e8aaa54ec428c60c3ea61",
+      "span_id": "50c9d1b966ffb578"
+    },
+    {
+      "id": "1ccb9003-d320-4c20-8847-30479347285f",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "processing",
+        "priority": null,
+        "limit": 42,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+          "title": "Update search index #6144",
+          "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 62
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:38.926401",
+          "updated_at": "2026-01-21T04:59:43.986536",
+          "claimed_at": "2026-01-21T04:59:43.976661",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+          "title": "Archive old records #1470",
+          "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 34
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:35.193972",
+          "updated_at": "2026-01-21T04:59:39.852751",
+          "claimed_at": "2026-01-21T04:59:39.841933",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:26.908768",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:45.171837+00:00",
+      "end_time": "2026-01-21T04:59:45.173249+00:00",
+      "duration_ms": 1.3829170002281899,
+      "dependencies": [],
+      "trace_id": "d5006717ba48b9aa9660d09c81f35e5c",
+      "span_id": "08f371f2e667964c"
+    },
+    {
+      "id": "bc4368b1-268d-4972-acca-40f4e432fbc2",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": 80
+        }
+      },
+      "result": {
+        "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+        "title": "Update search index #6144",
+        "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+        "status": "processing",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 62
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:38.926401",
+        "updated_at": "2026-01-21T04:59:43.986536",
+        "claimed_at": "2026-01-21T04:59:43.976661",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:43.986490+00:00",
+      "end_time": "2026-01-21T04:59:44.074639+00:00",
+      "duration_ms": 88.11904100002721,
+      "dependencies": [],
+      "trace_id": "8883795f7d54ec9dde6c43c995fc4459",
+      "span_id": "20620f6b96980a73"
+    },
+    {
+      "id": "b91b7335-637a-4c4a-aa21-8e8df1af5cbb",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+        "title": "Update search index #6144",
+        "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+        "status": "claimed",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 62
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:38.926401",
+        "updated_at": "2026-01-21T04:59:43.976661",
+        "claimed_at": "2026-01-21T04:59:43.976661",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:43.975842+00:00",
+      "end_time": "2026-01-21T04:59:43.978802+00:00",
+      "duration_ms": 2.940333999504219,
+      "dependencies": [],
+      "trace_id": "1a027a3549e13d0947a0e0694def7d00",
+      "span_id": "8111a956bdd15c3f"
+    },
+    {
+      "id": "c210b219-72d0-47ee-960b-38c3ec47ecd0",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "pending",
+        "priority": null,
+        "limit": 31,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "022b84da-796d-4c71-a4c7-7bf627d5395b",
+          "title": "Process customer order #2072",
+          "description": "Auto-generated task at 2026-01-21T04:59:41.734587",
+          "status": "pending",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 71
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:41.741136",
+          "updated_at": "2026-01-21T04:59:41.741136",
+          "claimed_at": null,
+          "completed_at": null,
+          "claimed_by": null,
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+          "title": "Update search index #6144",
+          "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+          "status": "pending",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 62
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:38.926401",
+          "updated_at": "2026-01-21T04:59:38.926401",
+          "claimed_at": null,
+          "completed_at": null,
+          "claimed_by": null,
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+          "title": "Generate monthly report #3251",
+          "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+          "status": "pending",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 40
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:36.242581",
+          "updated_at": "2026-01-21T04:59:36.242581",
+          "claimed_at": null,
+          "completed_at": null,
+          "claimed_by": null,
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:42.782754+00:00",
+      "end_time": "2026-01-21T04:59:42.784466+00:00",
+      "duration_ms": 1.6784170002210885,
+      "dependencies": [],
+      "trace_id": "4a244c948f4b2632335373067a01d4aa",
+      "span_id": "485a43f3b887ecdd"
+    },
+    {
+      "id": "9046fd99-9a73-4bd4-ba5b-532971ded7df",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Process customer order #2072",
+          "description": "Auto-generated task at 2026-01-21T04:59:41.734587",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 71
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "022b84da-796d-4c71-a4c7-7bf627d5395b",
+        "title": "Process customer order #2072",
+        "description": "Auto-generated task at 2026-01-21T04:59:41.734587",
+        "status": "pending",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 71
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:41.741136",
+        "updated_at": "2026-01-21T04:59:41.741136",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:41.741069+00:00",
+      "end_time": "2026-01-21T04:59:41.743709+00:00",
+      "duration_ms": 2.612250000311178,
+      "dependencies": [],
+      "trace_id": "b7afe1e11848f962dc2505f5bcd3d323",
+      "span_id": "d4bd6cbbd9dc841f"
+    },
+    {
+      "id": "93f2a124-7960-4a47-937e-e11e16ad72ac",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "b82600c7-2c31-4ec4-9982-5c8864484f5f"
+      },
+      "result": {
+        "id": "b82600c7-2c31-4ec4-9982-5c8864484f5f",
+        "title": "Validate data integrity #9057",
+        "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+        "status": "claimed",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 69
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:30.294483",
+        "updated_at": "2026-01-21T04:59:38.076516",
+        "claimed_at": "2026-01-21T04:59:38.076516",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:40.761215+00:00",
+      "end_time": "2026-01-21T04:59:40.762509+00:00",
+      "duration_ms": 1.2630839992198162,
+      "dependencies": [],
+      "trace_id": "71857688380c1f2bcf11bed400678042",
+      "span_id": "0fa1dbc4eda3d8e7"
+    },
+    {
+      "id": "465bd6bd-3e37-4f19-912b-8d1e31ca0255",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": 84
+        }
+      },
+      "result": {
+        "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+        "title": "Archive old records #1470",
+        "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+        "status": "processing",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 34
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:35.193972",
+        "updated_at": "2026-01-21T04:59:39.852751",
+        "claimed_at": "2026-01-21T04:59:39.841933",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:39.852705+00:00",
+      "end_time": "2026-01-21T04:59:39.944333+00:00",
+      "duration_ms": 91.58529200067278,
+      "dependencies": [],
+      "trace_id": "27d9d61bb145874c015d86e28e148ff8",
+      "span_id": "dc02efa887a4639a"
+    },
+    {
+      "id": "8980ab06-093f-458b-b566-a863a1ba08cc",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+        "title": "Archive old records #1470",
+        "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+        "status": "claimed",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 34
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:35.193972",
+        "updated_at": "2026-01-21T04:59:39.841933",
+        "claimed_at": "2026-01-21T04:59:39.841933",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:39.840604+00:00",
+      "end_time": "2026-01-21T04:59:39.844599+00:00",
+      "duration_ms": 3.970124998886604,
+      "dependencies": [],
+      "trace_id": "b63b4d8c31fc80b3c8f77fcb25a75d6b",
+      "span_id": "67d8f2ab20b71d88"
+    },
+    {
+      "id": "4184fb09-7706-466d-b4ed-9363aa9994b4",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Update search index #6144",
+          "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 62
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "e788314e-01ea-4cab-8f42-3c7dc9c68084",
+        "title": "Update search index #6144",
+        "description": "Auto-generated task at 2026-01-21T04:59:38.919946",
+        "status": "pending",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 62
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:38.926401",
+        "updated_at": "2026-01-21T04:59:38.926401",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:38.926326+00:00",
+      "end_time": "2026-01-21T04:59:38.929100+00:00",
+      "duration_ms": 2.741250000326545,
+      "dependencies": [],
+      "trace_id": "4e40fb2cb9508fc8177751a4bfe16a71",
+      "span_id": "28ee2d4ec7565f6a"
+    },
+    {
+      "id": "a493fe5b-e208-4805-8b79-e4a9f5ba3d74",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "b82600c7-2c31-4ec4-9982-5c8864484f5f",
+        "title": "Validate data integrity #9057",
+        "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+        "status": "claimed",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 69
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:30.294483",
+        "updated_at": "2026-01-21T04:59:38.076516",
+        "claimed_at": "2026-01-21T04:59:38.076516",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:38.075752+00:00",
+      "end_time": "2026-01-21T04:59:38.078782+00:00",
+      "duration_ms": 3.009417001521797,
+      "dependencies": [],
+      "trace_id": "7fc7a4d232984dc78392ea5527c47d5f",
+      "span_id": "ad12078b060c3248"
+    },
+    {
+      "id": "40beae68-db1f-4c5d-be2c-81182d3e7277",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": null,
+        "priority": null,
+        "limit": 31,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+          "title": "Generate monthly report #3251",
+          "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+          "status": "pending",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 40
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:36.242581",
+          "updated_at": "2026-01-21T04:59:36.242581",
+          "claimed_at": null,
+          "completed_at": null,
+          "claimed_by": null,
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+          "title": "Archive old records #1470",
+          "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+          "status": "pending",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 34
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:35.193972",
+          "updated_at": "2026-01-21T04:59:35.193972",
+          "claimed_at": null,
+          "completed_at": null,
+          "claimed_by": null,
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "b82600c7-2c31-4ec4-9982-5c8864484f5f",
+          "title": "Validate data integrity #9057",
+          "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+          "status": "pending",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 69
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:30.294483",
+          "updated_at": "2026-01-21T04:59:30.294483",
+          "claimed_at": null,
+          "completed_at": null,
+          "claimed_by": null,
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+          "title": "Validate data integrity #2329",
+          "description": "Auto-generated task at 2026-01-21T04:59:29.082525",
+          "status": "completed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 76
+          },
+          "result": {
+            "output": "Completed by simulator-worker-1",
+            "value": 99
+          },
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:29.088358",
+          "updated_at": "2026-01-21T04:59:32.493582",
+          "claimed_at": "2026-01-21T04:59:32.473376",
+          "completed_at": "2026-01-21T04:59:32.493582",
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+          "title": "Calculate user metrics #6141",
+          "description": "Auto-generated task at 2026-01-21T04:59:21.870070",
+          "status": "claimed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 66
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:21.875170",
+          "updated_at": "2026-01-21T04:59:23.977594",
+          "claimed_at": "2026-01-21T04:59:23.977594",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:26.908768",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:01.815723",
+          "updated_at": "2026-01-21T04:58:27.716690",
+          "claimed_at": "2026-01-21T04:58:27.716690",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:37.246275+00:00",
+      "end_time": "2026-01-21T04:59:37.247295+00:00",
+      "duration_ms": 1.001083999653929,
+      "dependencies": [],
+      "trace_id": "eda2289d1463c0a6ed08531a9a240c42",
+      "span_id": "a86b683051c94d21"
+    },
+    {
+      "id": "449c3ae6-4720-4841-b045-5272d0ac18f9",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Generate monthly report #3251",
+          "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 40
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "08a72f73-84d5-46d4-aa3f-4623ab55fa9d",
+        "title": "Generate monthly report #3251",
+        "description": "Auto-generated task at 2026-01-21T04:59:36.237832",
+        "status": "pending",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 40
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:36.242581",
+        "updated_at": "2026-01-21T04:59:36.242581",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:36.242515+00:00",
+      "end_time": "2026-01-21T04:59:36.244982+00:00",
+      "duration_ms": 2.445125001031556,
+      "dependencies": [],
+      "trace_id": "61209c7bf6a979f25dbeebbc821c4e56",
+      "span_id": "eec6027563685ba5"
+    },
+    {
+      "id": "25270324-4652-4480-bddd-35753f44bf64",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Archive old records #1470",
+          "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 34
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "b648b694-b39c-43ac-9a34-2b1653790b04",
+        "title": "Archive old records #1470",
+        "description": "Auto-generated task at 2026-01-21T04:59:35.187309",
+        "status": "pending",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 34
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:35.193972",
+        "updated_at": "2026-01-21T04:59:35.193972",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:35.193906+00:00",
+      "end_time": "2026-01-21T04:59:35.196612+00:00",
+      "duration_ms": 2.6786660000652773,
+      "dependencies": [],
+      "trace_id": "4f18fb804d21840034ad96908535cc47",
+      "span_id": "7b9ffcbf2c62a500"
+    },
+    {
+      "id": "d6e915d3-a7af-413e-8716-900b8ac553c9",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "completed",
+        "priority": null,
+        "limit": 47,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+          "title": "Validate data integrity #2329",
+          "description": "Auto-generated task at 2026-01-21T04:59:29.082525",
+          "status": "completed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 76
+          },
+          "result": {
+            "output": "Completed by simulator-worker-1",
+            "value": 99
+          },
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:29.088358",
+          "updated_at": "2026-01-21T04:59:32.493582",
+          "claimed_at": "2026-01-21T04:59:32.473376",
+          "completed_at": "2026-01-21T04:59:32.493582",
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:34.331295+00:00",
+      "end_time": "2026-01-21T04:59:34.332896+00:00",
+      "duration_ms": 1.569500000186963,
+      "dependencies": [],
+      "trace_id": "0b79925e1f4050c243e0ba091ea35c84",
+      "span_id": "9a4ae096a7e1fe32"
+    },
+    {
+      "id": "b76c2554-f7b4-486e-8dc8-77b1feb64eec",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "processing",
+        "priority": null,
+        "limit": 48,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "status": "processing",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:26.908768",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:33.325863+00:00",
+      "end_time": "2026-01-21T04:59:33.326770+00:00",
+      "duration_ms": 0.8901660003175493,
+      "dependencies": [],
+      "trace_id": "caf7747e768d6d93a1385d823397d4d9",
+      "span_id": "f29aaa96c172afa7"
+    },
+    {
+      "id": "8b38239d-163c-4c7f-a1ac-b24d40571dee",
+      "function_name": "complete_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+        "result": {
+          "output": "Completed by simulator-worker-1",
+          "value": 99
+        }
+      },
+      "result": {
+        "id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+        "title": "Validate data integrity #2329",
+        "description": "Auto-generated task at 2026-01-21T04:59:29.082525",
+        "status": "completed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 76
+        },
+        "result": {
+          "output": "Completed by simulator-worker-1",
+          "value": 99
+        },
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:29.088358",
+        "updated_at": "2026-01-21T04:59:32.493582",
+        "claimed_at": "2026-01-21T04:59:32.473376",
+        "completed_at": "2026-01-21T04:59:32.493582",
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:32.493550+00:00",
+      "end_time": "2026-01-21T04:59:32.495312+00:00",
+      "duration_ms": 1.7463750009483192,
+      "dependencies": [],
+      "trace_id": "bf1d1c71f04689a2147f80afccb001db",
+      "span_id": "2ae7affc13f6ef70"
+    },
+    {
+      "id": "8603dee3-648d-431d-816c-46b8c17e1431",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": null
+        }
+      },
+      "result": {
+        "id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+        "title": "Validate data integrity #2329",
+        "description": "Auto-generated task at 2026-01-21T04:59:29.082525",
+        "status": "processing",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 76
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:29.088358",
+        "updated_at": "2026-01-21T04:59:32.484830",
+        "claimed_at": "2026-01-21T04:59:32.473376",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:32.484781+00:00",
+      "end_time": "2026-01-21T04:59:32.486834+00:00",
+      "duration_ms": 2.02608300060092,
+      "dependencies": [],
+      "trace_id": "f9d1e55ab071264885607f05a3f13cd7",
+      "span_id": "b4d786537e95e1c7"
+    },
+    {
+      "id": "27dadf1a-7812-489b-bf2e-e709ab02c469",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+        "title": "Validate data integrity #2329",
+        "description": "Auto-generated task at 2026-01-21T04:59:29.082525",
+        "status": "claimed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 76
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:29.088358",
+        "updated_at": "2026-01-21T04:59:32.473376",
+        "claimed_at": "2026-01-21T04:59:32.473376",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:32.472174+00:00",
+      "end_time": "2026-01-21T04:59:32.476532+00:00",
+      "duration_ms": 4.331957999966107,
+      "dependencies": [],
+      "trace_id": "74a46808ba43656a70d42dc1d2bd33fc",
+      "span_id": "6e50a2823c01ae6e"
+    },
+    {
+      "id": "b28d5c71-a1eb-44de-b648-3e1cd5f8d2c6",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "f78c2218-f00e-4b72-aebf-1582c7656f82"
+      },
+      "result": {
+        "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+        "title": "Calculate user metrics #6141",
+        "description": "Auto-generated task at 2026-01-21T04:59:21.870070",
+        "status": "claimed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 66
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:21.875170",
+        "updated_at": "2026-01-21T04:59:23.977594",
+        "claimed_at": "2026-01-21T04:59:23.977594",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:31.339343+00:00",
+      "end_time": "2026-01-21T04:59:31.339919+00:00",
+      "duration_ms": 0.562416000320809,
+      "dependencies": [],
+      "trace_id": "5d2b6ba3a39c906922e3d9344ca2e111",
+      "span_id": "cccaee6be1c6ce27"
+    },
+    {
+      "id": "43cfb780-5e9d-4b79-ad2d-1881b87f5372",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Validate data integrity #9057",
+          "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 69
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "b82600c7-2c31-4ec4-9982-5c8864484f5f",
+        "title": "Validate data integrity #9057",
+        "description": "Auto-generated task at 2026-01-21T04:59:30.288735",
+        "status": "pending",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 69
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:30.294483",
+        "updated_at": "2026-01-21T04:59:30.294483",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:30.294399+00:00",
+      "end_time": "2026-01-21T04:59:30.297323+00:00",
+      "duration_ms": 2.8887919997941935,
+      "dependencies": [],
+      "trace_id": "a7ae93c5c5cf86de6250d4c26bf433ff",
+      "span_id": "26dfdede9ed21e23"
+    },
+    {
+      "id": "2b12a090-0d64-455f-947e-c5d710d656b0",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Validate data integrity #2329",
+          "description": "Auto-generated task at 2026-01-21T04:59:29.082525",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 76
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "7de333f2-3f9a-4b5a-ae9c-3e58217a1d80",
+        "title": "Validate data integrity #2329",
+        "description": "Auto-generated task at 2026-01-21T04:59:29.082525",
+        "status": "pending",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 76
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:29.088358",
+        "updated_at": "2026-01-21T04:59:29.088358",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:29.088172+00:00",
+      "end_time": "2026-01-21T04:59:29.091408+00:00",
+      "duration_ms": 3.2040419991972158,
+      "dependencies": [],
+      "trace_id": "0ad1ca0f23a511b148a98aaf89ccc50d",
+      "span_id": "0a90b0787e0b4f4e"
+    },
+    {
+      "id": "0645c8e5-56c8-4e9e-824e-45875d669ea4",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "72f59ff7-f783-4943-b9e0-8118601f1024"
+      },
+      "result": {
+        "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+        "title": "Validate data integrity #5140",
+        "description": "Updated at 2026-01-21T04:59:26.901848",
+        "status": "processing",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 30
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:35.769141",
+        "updated_at": "2026-01-21T04:59:26.908768",
+        "claimed_at": "2026-01-21T04:59:16.671767",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:27.928963+00:00",
+      "end_time": "2026-01-21T04:59:27.930264+00:00",
+      "duration_ms": 1.2716670007648645,
+      "dependencies": [],
+      "trace_id": "a7462aaca405e7a96b6119a197741105",
+      "span_id": "ab5e125f3aa814f4"
+    },
+    {
+      "id": "8bae3859-a08b-4682-aa04-855fbb439627",
+      "function_name": "update_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+        "request": {
+          "title": null,
+          "description": "Updated at 2026-01-21T04:59:26.901848",
+          "priority": "high",
+          "payload": null
+        }
+      },
+      "result": {
+        "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+        "title": "Validate data integrity #5140",
+        "description": "Updated at 2026-01-21T04:59:26.901848",
+        "status": "processing",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 30
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:35.769141",
+        "updated_at": "2026-01-21T04:59:26.908768",
+        "claimed_at": "2026-01-21T04:59:16.671767",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:26.907706+00:00",
+      "end_time": "2026-01-21T04:59:26.911684+00:00",
+      "duration_ms": 3.9479579991166247,
+      "dependencies": [],
+      "trace_id": "bb96faa07cdd857a937c1430cb3ab15c",
+      "span_id": "5206315e6dd4b355"
+    },
+    {
+      "id": "6d125e53-22e2-4294-b82e-ae1cf4f7ac51",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": null,
+        "priority": null,
+        "limit": 18,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+          "title": "Calculate user metrics #6141",
+          "description": "Auto-generated task at 2026-01-21T04:59:21.870070",
+          "status": "claimed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 66
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:21.875170",
+          "updated_at": "2026-01-21T04:59:23.977594",
+          "claimed_at": "2026-01-21T04:59:23.977594",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:16.677049",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:01.815723",
+          "updated_at": "2026-01-21T04:58:27.716690",
+          "claimed_at": "2026-01-21T04:58:27.716690",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:25.976379+00:00",
+      "end_time": "2026-01-21T04:59:25.977576+00:00",
+      "duration_ms": 1.1683749999065185,
+      "dependencies": [],
+      "trace_id": "feb0ab50a40f1ec40d6b0ef51b6f4a55",
+      "span_id": "d5fa40cf52b97f6b"
+    },
+    {
+      "id": "1ad97d61-6310-4099-888b-85b85fa8ab54",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": null,
+        "priority": null,
+        "limit": 18,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+          "title": "Calculate user metrics #6141",
+          "description": "Auto-generated task at 2026-01-21T04:59:21.870070",
+          "status": "claimed",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 66
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:59:21.875170",
+          "updated_at": "2026-01-21T04:59:23.977594",
+          "claimed_at": "2026-01-21T04:59:23.977594",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:16.677049",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:01.815723",
+          "updated_at": "2026-01-21T04:58:27.716690",
+          "claimed_at": "2026-01-21T04:58:27.716690",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:24.882573+00:00",
+      "end_time": "2026-01-21T04:59:24.884027+00:00",
+      "duration_ms": 1.4299169997684658,
+      "dependencies": [],
+      "trace_id": "f33f9008577d358308d3c120b38a5d34",
+      "span_id": "aea424bacfbc5053"
+    },
+    {
+      "id": "6a2d1f21-47a4-4578-948c-5de485062ca5",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+        "title": "Calculate user metrics #6141",
+        "description": "Auto-generated task at 2026-01-21T04:59:21.870070",
+        "status": "claimed",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 66
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:21.875170",
+        "updated_at": "2026-01-21T04:59:23.977594",
+        "claimed_at": "2026-01-21T04:59:23.977594",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:23.976777+00:00",
+      "end_time": "2026-01-21T04:59:23.980547+00:00",
+      "duration_ms": 3.746958000192535,
+      "dependencies": [],
+      "trace_id": "49deae8d500665f0115e160f8a2c8994",
+      "span_id": "c81a2d8b976bfa58"
+    },
+    {
+      "id": "1de190c9-92b5-4043-adda-0e8c83300bbc",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "processing",
+        "priority": null,
+        "limit": 41,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:16.677049",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:22.958357+00:00",
+      "end_time": "2026-01-21T04:59:22.958831+00:00",
+      "duration_ms": 0.4627920006896602,
+      "dependencies": [],
+      "trace_id": "cd3438f69306302b767af5bf65d4475d",
+      "span_id": "fe75d62a98e40e53"
+    },
+    {
+      "id": "ab3463f2-1fd8-4986-95f4-0dd6e3d9cc1f",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Calculate user metrics #6141",
+          "description": "Auto-generated task at 2026-01-21T04:59:21.870070",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 66
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "f78c2218-f00e-4b72-aebf-1582c7656f82",
+        "title": "Calculate user metrics #6141",
+        "description": "Auto-generated task at 2026-01-21T04:59:21.870070",
+        "status": "pending",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 66
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:59:21.875170",
+        "updated_at": "2026-01-21T04:59:21.875170",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:21.875073+00:00",
+      "end_time": "2026-01-21T04:59:21.877352+00:00",
+      "duration_ms": 2.235583000583574,
+      "dependencies": [],
+      "trace_id": "f8cd2d51207405be4ba1c2e7c01d9c32",
+      "span_id": "0f0feb93a3a947b1"
+    },
+    {
+      "id": "cb441b06-3923-4ca8-b0be-47467c163bd2",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": null,
+        "priority": null,
+        "limit": 19,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:16.677049",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "status": "claimed",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:01.815723",
+          "updated_at": "2026-01-21T04:58:27.716690",
+          "claimed_at": "2026-01-21T04:58:27.716690",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:20.692258+00:00",
+      "end_time": "2026-01-21T04:59:20.693044+00:00",
+      "duration_ms": 0.7687079996685497,
+      "dependencies": [],
+      "trace_id": "998737283d639dfa111fa6a1908d818d",
+      "span_id": "d62ca8dbeef94c75"
+    },
+    {
+      "id": "255a89e4-71e8-4592-8564-2b838492f885",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": "processing",
+        "priority": null,
+        "limit": 29,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+          "title": "Validate data integrity #5140",
+          "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+          "status": "processing",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:35.769141",
+          "updated_at": "2026-01-21T04:59:16.677049",
+          "claimed_at": "2026-01-21T04:59:16.671767",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        },
+        {
+          "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+          "title": "Generate invoice #2096",
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "status": "processing",
+          "priority": "critical",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:20.340202",
+          "updated_at": "2026-01-21T04:58:31.202957",
+          "claimed_at": "2026-01-21T04:58:21.444710",
+          "completed_at": null,
+          "claimed_by": "simulator-worker-1",
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:19.824863+00:00",
+      "end_time": "2026-01-21T04:59:19.826131+00:00",
+      "duration_ms": 1.2501250002969755,
+      "dependencies": [],
+      "trace_id": "57e27333cc0bfbc121ab6adb65ed5ed2",
+      "span_id": "75e2170d19064d7b"
+    },
+    {
+      "id": "3470103c-4cee-48a1-9ba0-bf55b10e1043",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "72f59ff7-f783-4943-b9e0-8118601f1024"
+      },
+      "result": {
+        "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+        "title": "Validate data integrity #5140",
+        "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+        "status": "processing",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 30
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:35.769141",
+        "updated_at": "2026-01-21T04:59:16.677049",
+        "claimed_at": "2026-01-21T04:59:16.671767",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:18.941624+00:00",
+      "end_time": "2026-01-21T04:59:18.942585+00:00",
+      "duration_ms": 0.9324999991804361,
+      "dependencies": [],
+      "trace_id": "29103fcd26fbab3ebb85533714c4af12",
+      "span_id": "95e5ad8ddce46d12"
+    },
+    {
+      "id": "425b9a06-5165-4279-a858-fb8d9f61bf5a",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": null,
+      "exception": "404: No tasks available",
+      "exception_type": "HTTPException",
+      "start_time": "2026-01-21T04:59:17.913980+00:00",
+      "end_time": "2026-01-21T04:59:17.914868+00:00",
+      "duration_ms": 0.863792000018293,
+      "dependencies": [],
+      "trace_id": "6b344d2320dc696e5b5bc9e18eedc57a",
+      "span_id": "83439295d56b100d"
+    },
+    {
+      "id": "c3f7dd36-9303-46f7-919c-443c76f75c9e",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": 31
+        }
+      },
+      "result": {
+        "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+        "title": "Validate data integrity #5140",
+        "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+        "status": "processing",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 30
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:35.769141",
+        "updated_at": "2026-01-21T04:59:16.677049",
+        "claimed_at": "2026-01-21T04:59:16.671767",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:16.677037+00:00",
+      "end_time": "2026-01-21T04:59:16.714458+00:00",
+      "duration_ms": 37.41170799912652,
+      "dependencies": [],
+      "trace_id": "4ad88a434b788058b9c5cfea0611d6d8",
+      "span_id": "fac904caf4b5b1c3"
+    },
+    {
+      "id": "6e398c99-2317-4a6e-967c-f99ebb589acc",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+        "title": "Validate data integrity #5140",
+        "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+        "status": "claimed",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 30
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:35.769141",
+        "updated_at": "2026-01-21T04:59:16.671767",
+        "claimed_at": "2026-01-21T04:59:16.671767",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:59:16.671452+00:00",
+      "end_time": "2026-01-21T04:59:16.673443+00:00",
+      "duration_ms": 1.9750829997065011,
+      "dependencies": [],
+      "trace_id": "16044ce2e785c60004cb3a5859ad3c33",
+      "span_id": "ae39433d2edfe913"
+    },
+    {
+      "id": "888a56e9-86a5-4353-b835-a21d255cdb5d",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Validate data integrity #5140",
+          "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+          "priority": "medium",
+          "payload": {
+            "generated": true,
+            "value": 30
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "72f59ff7-f783-4943-b9e0-8118601f1024",
+        "title": "Validate data integrity #5140",
+        "description": "Auto-generated task at 2026-01-21T04:58:35.764290",
+        "status": "pending",
+        "priority": "medium",
+        "payload": {
+          "generated": true,
+          "value": 30
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:35.769141",
+        "updated_at": "2026-01-21T04:58:35.769141",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:35.769056+00:00",
+      "end_time": "2026-01-21T04:58:35.772711+00:00",
+      "duration_ms": 3.6197500012349337,
+      "dependencies": [],
+      "trace_id": "983685ab46ae1df22ec3f04ad2fc0a06",
+      "span_id": "046d033275206bac"
+    },
+    {
+      "id": "bed31c28-56b4-4d72-b8b3-f2d104955d3f",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": null,
+      "exception": "404: No tasks available",
+      "exception_type": "HTTPException",
+      "start_time": "2026-01-21T04:58:34.665808+00:00",
+      "end_time": "2026-01-21T04:58:34.667554+00:00",
+      "duration_ms": 1.7163339998660376,
+      "dependencies": [],
+      "trace_id": "aec21b679886e6e0feddc057fcac16d1",
+      "span_id": "a41fa91ee56b53f2"
+    },
+    {
+      "id": "8fe38019-bf9f-47f2-bb3b-0dfa136f82a8",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": null,
+      "exception": "404: No tasks available",
+      "exception_type": "HTTPException",
+      "start_time": "2026-01-21T04:58:33.816465+00:00",
+      "end_time": "2026-01-21T04:58:33.817269+00:00",
+      "duration_ms": 0.7819580005161697,
+      "dependencies": [],
+      "trace_id": "e85e1c68c0092765d19fa2289a4776be",
+      "span_id": "e49f57aabd0047f9"
+    },
+    {
+      "id": "9cf33fc3-85f5-40ca-9616-260fbc5bdc88",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": null,
+      "exception": "404: No tasks available",
+      "exception_type": "HTTPException",
+      "start_time": "2026-01-21T04:58:32.625076+00:00",
+      "end_time": "2026-01-21T04:58:32.626085+00:00",
+      "duration_ms": 0.9860830014076782,
+      "dependencies": [],
+      "trace_id": "38697376293f382170dc1a9eb74817ad",
+      "span_id": "7dae4574e424731d"
+    },
+    {
+      "id": "c5896799-76b3-45b7-aa56-19973b29f739",
+      "function_name": "update_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+        "request": {
+          "title": null,
+          "description": "Updated at 2026-01-21T04:58:31.194368",
+          "priority": "critical",
+          "payload": null
+        }
+      },
+      "result": {
+        "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+        "title": "Generate invoice #2096",
+        "description": "Updated at 2026-01-21T04:58:31.194368",
+        "status": "processing",
+        "priority": "critical",
+        "payload": {
+          "generated": true,
+          "value": 52
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:20.340202",
+        "updated_at": "2026-01-21T04:58:31.202957",
+        "claimed_at": "2026-01-21T04:58:21.444710",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:31.201951+00:00",
+      "end_time": "2026-01-21T04:58:31.205818+00:00",
+      "duration_ms": 3.8387499989767093,
+      "dependencies": [],
+      "trace_id": "0345c648bcf255453245dabe8b6ca2d0",
+      "span_id": "85baadf9eec39d0b"
+    },
+    {
+      "id": "6d7fac61-9a84-49f8-b25c-12fd78752d59",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "ab751186-0128-4a61-8168-a1a6e816bd85"
+      },
+      "result": {
+        "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+        "title": "Generate invoice #2096",
+        "description": "Auto-generated task at 2026-01-21T04:58:20.313317",
+        "status": "processing",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 52
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:20.340202",
+        "updated_at": "2026-01-21T04:58:21.469115",
+        "claimed_at": "2026-01-21T04:58:21.444710",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:29.746187+00:00",
+      "end_time": "2026-01-21T04:58:29.747083+00:00",
+      "duration_ms": 0.8761249991948716,
+      "dependencies": [],
+      "trace_id": "da7b05ab7d29ec76bd9dc6479c9e9344",
+      "span_id": "321742599a72efef"
+    },
+    {
+      "id": "dbdcca92-b803-4089-8735-ef215d734386",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+        "title": "Manual test task",
+        "description": "Created from UI",
+        "status": "claimed",
+        "priority": "medium",
+        "payload": {
+          "test": true
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:01.815723",
+        "updated_at": "2026-01-21T04:58:27.716690",
+        "claimed_at": "2026-01-21T04:58:27.716690",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:27.715793+00:00",
+      "end_time": "2026-01-21T04:58:27.718704+00:00",
+      "duration_ms": 2.884749999793712,
+      "dependencies": [],
+      "trace_id": "e9b91eefe267f540b6e1de699dcf809b",
+      "span_id": "4ee6c073f0d320d9"
+    },
+    {
+      "id": "81b8898e-3ead-4811-aed1-64a808cd0c2e",
+      "function_name": "get_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "ab751186-0128-4a61-8168-a1a6e816bd85"
+      },
+      "result": {
+        "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+        "title": "Generate invoice #2096",
+        "description": "Auto-generated task at 2026-01-21T04:58:20.313317",
+        "status": "processing",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 52
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:20.340202",
+        "updated_at": "2026-01-21T04:58:21.469115",
+        "claimed_at": "2026-01-21T04:58:21.444710",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:25.367525+00:00",
+      "end_time": "2026-01-21T04:58:25.368667+00:00",
+      "duration_ms": 1.1113750006188639,
+      "dependencies": [],
+      "trace_id": "a075f9a044c3c511bc9b2a5d90a3fbbf",
+      "span_id": "d8a2c6a7db8614bc"
+    },
+    {
+      "id": "e49b4149-58ff-4eec-a305-4d98fc273a6f",
+      "function_name": "process_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "task_id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+        "request": {
+          "worker_id": "simulator-worker-1",
+          "simulate_duration_ms": 63
+        }
+      },
+      "result": {
+        "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+        "title": "Generate invoice #2096",
+        "description": "Auto-generated task at 2026-01-21T04:58:20.313317",
+        "status": "processing",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 52
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:20.340202",
+        "updated_at": "2026-01-21T04:58:21.469115",
+        "claimed_at": "2026-01-21T04:58:21.444710",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:21.469084+00:00",
+      "end_time": "2026-01-21T04:58:21.537662+00:00",
+      "duration_ms": 68.52712499858171,
+      "dependencies": [],
+      "trace_id": "86a6f563763895f865710f312c087905",
+      "span_id": "92edc74d0e756f88"
+    },
+    {
+      "id": "66e21dc4-5453-474d-afbe-8ae9b749f6b3",
+      "function_name": "claim_next_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "worker_id": "simulator-worker-1",
+        "priority": null
+      },
+      "result": {
+        "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+        "title": "Generate invoice #2096",
+        "description": "Auto-generated task at 2026-01-21T04:58:20.313317",
+        "status": "claimed",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 52
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:20.340202",
+        "updated_at": "2026-01-21T04:58:21.444710",
+        "claimed_at": "2026-01-21T04:58:21.444710",
+        "completed_at": null,
+        "claimed_by": "simulator-worker-1",
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:21.444115+00:00",
+      "end_time": "2026-01-21T04:58:21.446485+00:00",
+      "duration_ms": 2.3527920002379688,
+      "dependencies": [],
+      "trace_id": "26ca33e007069e2db68e93bd684685ef",
+      "span_id": "8c6253c2d1acb485"
+    },
+    {
+      "id": "a76b2519-1078-41c7-bfc0-3b5459d11b6f",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Generate invoice #2096",
+          "description": "Auto-generated task at 2026-01-21T04:58:20.313317",
+          "priority": "high",
+          "payload": {
+            "generated": true,
+            "value": 52
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "ab751186-0128-4a61-8168-a1a6e816bd85",
+        "title": "Generate invoice #2096",
+        "description": "Auto-generated task at 2026-01-21T04:58:20.313317",
+        "status": "pending",
+        "priority": "high",
+        "payload": {
+          "generated": true,
+          "value": 52
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:20.340202",
+        "updated_at": "2026-01-21T04:58:20.340202",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:20.340148+00:00",
+      "end_time": "2026-01-21T04:58:20.342353+00:00",
+      "duration_ms": 2.1827919990755618,
+      "dependencies": [],
+      "trace_id": "9b65f6e9443d4192ab2f8564d7bc6680",
+      "span_id": "bad6ec1937b5c044"
+    },
+    {
+      "id": "6f8faf53-4ef8-41ea-90da-69ee5d7d8440",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": null,
+        "priority": null,
+        "limit": 50,
+        "offset": 0
+      },
+      "result": [
+        {
+          "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "status": "pending",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "result": null,
+          "error_message": null,
+          "created_at": "2026-01-21T04:58:01.815723",
+          "updated_at": "2026-01-21T04:58:01.815723",
+          "claimed_at": null,
+          "completed_at": null,
+          "claimed_by": null,
+          "retry_count": 0,
+          "max_retries": 3
+        }
+      ],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:01.845274+00:00",
+      "end_time": "2026-01-21T04:58:01.846129+00:00",
+      "duration_ms": 0.844458001665771,
+      "dependencies": [],
+      "trace_id": "a18e58849f5a389462847ac07c94783a",
+      "span_id": "c11ab16f62a8cad4"
+    },
+    {
+      "id": "fb76a2f5-dca1-4291-aac4-3f9fd054a8b4",
+      "function_name": "create_task",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "request": {
+          "title": "Manual test task",
+          "description": "Created from UI",
+          "priority": "medium",
+          "payload": {
+            "test": true
+          },
+          "max_retries": 3
+        }
+      },
+      "result": {
+        "id": "f2be4a2b-c8de-49e8-a9f7-b5e874a54c83",
+        "title": "Manual test task",
+        "description": "Created from UI",
+        "status": "pending",
+        "priority": "medium",
+        "payload": {
+          "test": true
+        },
+        "result": null,
+        "error_message": null,
+        "created_at": "2026-01-21T04:58:01.815723",
+        "updated_at": "2026-01-21T04:58:01.815723",
+        "claimed_at": null,
+        "completed_at": null,
+        "claimed_by": null,
+        "retry_count": 0,
+        "max_retries": 3
+      },
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:01.815681+00:00",
+      "end_time": "2026-01-21T04:58:01.816908+00:00",
+      "duration_ms": 1.2138339989178348,
+      "dependencies": [],
+      "trace_id": "2fb173f31d202f12f4d341c29d1bcffb",
+      "span_id": "a61bf5b3223b7ddb"
+    },
+    {
+      "id": "7dc4df6d-2508-459c-a1c1-c028de9cc9bc",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": null,
+        "priority": null,
+        "limit": 50,
+        "offset": 0
+      },
+      "result": [],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:58:01.809061+00:00",
+      "end_time": "2026-01-21T04:58:01.809580+00:00",
+      "duration_ms": 0.5048330003774026,
+      "dependencies": [],
+      "trace_id": "46f8c80514ec7be337d15f6c7334e038",
+      "span_id": "d60bccc8d4530d4f"
+    },
+    {
+      "id": "589edfa1-ab6e-448a-acb1-7612fc76b518",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": null,
+        "priority": null,
+        "limit": 50,
+        "offset": 0
+      },
+      "result": [],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:57:56.970221+00:00",
+      "end_time": "2026-01-21T04:57:56.970621+00:00",
+      "duration_ms": 0.38712500099791214,
+      "dependencies": [],
+      "trace_id": "5540b6d26c3d3447a92161473eeb8fce",
+      "span_id": "74c16b704d042a83"
+    },
+    {
+      "id": "1e89ba6e-004a-4f24-af4d-bfe8cb9a3d37",
+      "function_name": "list_tasks",
+      "module": "demo.api",
+      "args": [],
+      "kwargs": {
+        "status": null,
+        "priority": null,
+        "limit": 50,
+        "offset": 0
+      },
+      "result": [],
+      "exception": null,
+      "exception_type": null,
+      "start_time": "2026-01-21T04:57:42.945565+00:00",
+      "end_time": "2026-01-21T04:57:42.946026+00:00",
+      "duration_ms": 0.4422920010256348,
+      "dependencies": [],
+      "trace_id": "7a1529c00ecf380334aba015bf2c691e",
+      "span_id": "2d5d8c3591c63c05"
+    }
+  ],
+  "count": 94
+}

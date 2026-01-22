@@ -3,7 +3,7 @@
 import json
 import sqlite3
 from contextlib import contextmanager
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Generator, List, Optional
 
@@ -84,7 +84,7 @@ class TaskDatabase:
         """Create a new task."""
         import uuid
 
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         task = Task(
             id=str(uuid.uuid4()),
             title=task_create.title,
@@ -187,7 +187,7 @@ class TaskDatabase:
 
         if updates:
             updates.append("updated_at = ?")
-            params.append(datetime.utcnow().isoformat())
+            params.append(datetime.now(timezone.utc).isoformat())
             params.append(task_id)
 
             with self._get_connection() as conn:
@@ -208,7 +208,7 @@ class TaskDatabase:
 
     def claim_task(self, task_id: str, worker_id: str) -> Optional[Task]:
         """Claim a pending task for processing."""
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
 
         with self._get_connection() as conn:
             cursor = conn.execute(
@@ -269,7 +269,7 @@ class TaskDatabase:
 
     def start_processing(self, task_id: str) -> Optional[Task]:
         """Mark a claimed task as processing."""
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
 
         with self._get_connection() as conn:
             cursor = conn.execute(
@@ -294,7 +294,7 @@ class TaskDatabase:
 
     def complete_task(self, task_id: str, result: Optional[dict] = None) -> Optional[Task]:
         """Mark a task as completed."""
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
 
         with self._get_connection() as conn:
             cursor = conn.execute(
@@ -325,7 +325,7 @@ class TaskDatabase:
         if not task:
             return None
 
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
 
         # Check if we should retry
         if task.retry_count < task.max_retries:

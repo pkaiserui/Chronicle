@@ -11,7 +11,7 @@ import random
 import threading
 import time
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional
 
@@ -163,7 +163,7 @@ class TrafficSimulator:
             self.stats.failed_requests += 1
             self.stats.errors.append(
                 {
-                    "time": datetime.utcnow().isoformat(),
+                    "time": datetime.now(timezone.utc).isoformat(),
                     "endpoint": endpoint,
                     "error": str(e),
                 }
@@ -180,7 +180,7 @@ class TrafficSimulator:
             "/tasks",
             json={
                 "title": f"{title} #{random.randint(1000, 9999)}",
-                "description": f"Auto-generated task at {datetime.utcnow().isoformat()}",
+                "description": f"Auto-generated task at {datetime.now(timezone.utc).isoformat()}",
                 "priority": priority,
                 "payload": {"generated": True, "value": random.randint(1, 100)},
             },
@@ -224,7 +224,7 @@ class TrafficSimulator:
             "PATCH",
             f"/tasks/{task_id}",
             json={
-                "description": f"Updated at {datetime.utcnow().isoformat()}",
+                "description": f"Updated at {datetime.now(timezone.utc).isoformat()}",
                 "priority": random.choice(self.config.priorities),
             },
         )
@@ -335,7 +335,7 @@ class TrafficSimulator:
         operation = self._choose_operation()
 
         self.stats.total_requests += 1
-        self.stats.last_request_time = datetime.utcnow()
+        self.stats.last_request_time = datetime.now(timezone.utc)
         self.stats.requests_by_type[operation.value] = (
             self.stats.requests_by_type.get(operation.value, 0) + 1
         )
@@ -353,7 +353,7 @@ class TrafficSimulator:
 
     def _run_loop(self) -> None:
         """Main simulation loop."""
-        self.stats.start_time = datetime.utcnow()
+        self.stats.start_time = datetime.now(timezone.utc)
 
         while self._running:
             self.run_single()

@@ -10,7 +10,7 @@ from __future__ import annotations
 import random
 import time
 from contextlib import asynccontextmanager
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Optional
 
 from fastapi import FastAPI, HTTPException, Query
@@ -218,6 +218,16 @@ def list_tasks(
     """List tasks with optional filtering."""
     _maybe_inject_error("list_tasks")
 
+    # Extract actual values from Query objects if needed (for direct function calls in tests)
+    if not isinstance(status, (str, type(None))):
+        status = getattr(status, "default", None)
+    if not isinstance(priority, (str, type(None))):
+        priority = getattr(priority, "default", None)
+    if not isinstance(limit, int):
+        limit = getattr(limit, "default", 100)
+    if not isinstance(offset, int):
+        offset = getattr(offset, "default", 0)
+
     task_status = None
     task_priority = None
 
@@ -318,6 +328,12 @@ def claim_next_task(
 ) -> TaskResponse:
     """Claim the next available task from the queue."""
     _maybe_inject_error("claim_next_task")
+
+    # Extract actual values from Query objects if needed (for direct function calls in tests)
+    if not isinstance(worker_id, str):
+        worker_id = getattr(worker_id, "default", worker_id)
+    if not isinstance(priority, (str, type(None))):
+        priority = getattr(priority, "default", None)
 
     task_priority = None
     if priority:
@@ -423,7 +439,7 @@ def health_check() -> dict:
     return {
         "status": "healthy",
         "otel_enabled": OTEL_ENABLED,
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
 
@@ -440,6 +456,17 @@ def list_captures(
     offset: int = Query(0, ge=0),
 ) -> dict:
     """List captured function calls."""
+    # Extract actual values from Query objects if needed (for direct function calls in tests)
+    # Query objects passed as defaults need to be converted to their default values
+    if not isinstance(function_name, (str, type(None))):
+        function_name = getattr(function_name, "default", None)
+    if not isinstance(has_error, (bool, type(None))):
+        has_error = getattr(has_error, "default", None)
+    if not isinstance(limit, int):
+        limit = getattr(limit, "default", 50)
+    if not isinstance(offset, int):
+        offset = getattr(offset, "default", 0)
+    
     calls = get_storage().get_calls(
         function_name=function_name,
         has_error=has_error,
